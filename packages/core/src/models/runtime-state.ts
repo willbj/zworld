@@ -88,7 +88,13 @@ export type CurrentStateFact = z.infer<typeof CurrentStateFactSchema>;
 
 export const CurrentStateStateSchema = z.object({
   chapter: z.number().int().min(0),
-  facts: z.array(CurrentStateFactSchema).default([]),
+  // 容忍模型偶发的空字段：解析失败的 fact 直接丢弃，不中断写作流程
+  facts: z.array(z.unknown()).default([]).transform(arr =>
+    arr.flatMap(item => {
+      const result = CurrentStateFactSchema.safeParse(item);
+      return result.success ? [result.data] : [];
+    })
+  ),
 });
 
 export type CurrentStateState = z.infer<typeof CurrentStateStateSchema>;
