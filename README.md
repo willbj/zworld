@@ -105,7 +105,9 @@ zworld/
 #### 每次启动
 
 ```bash
-./start.sh              # 进入 novels/，启动 Studio，浏览器自动打开
+./start.sh              # 启动 Studio，浏览器自动打开
+./start.sh restart      # 杀掉旧进程后重启（端口占用时用这个）
+./start.sh stop         # 停止 Studio
 ./start.sh book create --title "吞天魔帝" --genre xuanhuan
 ./start.sh write next 吞天魔帝
 ```
