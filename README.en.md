@@ -1,15 +1,15 @@
 <p align="center">
-  <img src="assets/logo.svg" width="120" height="120" alt="InkOS Logo">
-  <img src="assets/inkos-text.svg" width="240" height="65" alt="InkOS">
+  <img src="assets/logo.svg" width="120" height="120" alt="ZWorld Logo">
+  <img src="assets/inkos-text.svg" width="240" height="65" alt="ZWorld">
 </p>
 
 <h1 align="center">Story Creation AI Agent<br><sub>Creation system for long-form and short fiction, scripts, interactive games, and IP content</sub></h1>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@actalk/inkos"><img src="https://img.shields.io/npm/v/@actalk/inkos.svg?color=cb3837&logo=npm" alt="npm version"></a>
+  <a href="https://www.npmjs.com/package/@zworld/zworld"><img src="https://img.shields.io/npm/v/@zworld/zworld.svg?color=cb3837&logo=npm" alt="npm version"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg" alt="License: AGPL-3.0"></a>
   <a href="https://github.com/Narcooo/inkos/stargazers"><img src="https://img.shields.io/github/stars/Narcooo/inkos?style=flat&logo=github&color=yellow" alt="GitHub stars"></a>
-  <a href="https://www.npmjs.com/package/@actalk/inkos"><img src="https://img.shields.io/npm/dm/@actalk/inkos?color=cb3837&logo=npm&label=downloads" alt="npm downloads"></a>
+  <a href="https://www.npmjs.com/package/@zworld/zworld"><img src="https://img.shields.io/npm/dm/@zworld/zworld?color=cb3837&logo=npm&label=downloads" alt="npm downloads"></a>
   <a href="https://clawhub.ai/narcooo/inkos"><img src="https://img.shields.io/badge/🦞%20ClawHub-Skill-FF6B35?labelColor=1a1a1a" alt="ClawHub Skill"></a>
 </p>
 
@@ -26,41 +26,41 @@
 
 ---
 
-InkOS is a local AI creation system for long-form novels, standalone short fiction, fan fiction, spinoffs, style imitation, continuation, and interactive worlds. Studio Chat, CLI, and TUI share the same action surface, so you can discuss ideas, confirm heavy actions, generate work, preview artifacts, and edit persistent project files from one place.
+ZWorld is a local AI creation system for long-form novels, standalone short fiction, fan fiction, spinoffs, style imitation, continuation, and interactive worlds. Studio Chat, CLI, and TUI share the same action surface, so you can discuss ideas, confirm heavy actions, generate work, preview artifacts, and edit persistent project files from one place.
 
-> 💡 **Give your writing agent a professional data layer first** — writing fiction isn't just about the model; what's usually missing is the source material. Pair InkOS with [**火花数据API (huohuaapi)**](https://huohuaapi.com/): a pay-per-call novel / web-fiction creation data API. Before the agent writes, it can pull sourced material — novel text, chapter structure, character profiles, writing style, and craft methods — instead of relying on prompts alone to fake a "plot outline".
+> 💡 **Give your writing agent a professional data layer first** — writing fiction isn't just about the model; what's usually missing is the source material. Pair ZWorld with [**火花数据API (huohuaapi)**](https://huohuaapi.com/): a pay-per-call novel / web-fiction creation data API. Before the agent writes, it can pull sourced material — novel text, chapter structure, character profiles, writing style, and craft methods — instead of relying on prompts alone to fake a "plot outline".
 
 ## v1.5.0 Major Update
 
-v1.5.0 is less about one isolated feature and more about moving InkOS from a chapter pipeline into a conversational, confirmable, context-aware creation system:
+v1.5.0 is less about one isolated feature and more about moving ZWorld from a chapter pipeline into a conversational, confirmable, context-aware creation system:
 
 - **Instruction following**: Studio Chat, TUI, and CLI natural-language entry points now route through a unified action surface. Plain discussion, book creation, Short, cover generation, Play, and long-form writing are no longer driven by scattered keyword shortcuts. Heavy actions require confirmation, and completion is based on real tool results.
 - **Context management**: Long-form context is split into protected / compressible layers. Semantic compression is used only when the context budget is tight; session history is restored through summaries to reduce old-history drift.
-- **Open world / branching interaction**: InkOS Play adds free actions, clickable choices, world contracts, time flow, character / item / evidence / relationship state, HUD, and optional image generation.
+- **Open world / branching interaction**: ZWorld Play adds free actions, clickable choices, world contracts, time flow, character / item / evidence / relationship state, HUD, and optional image generation.
 - **Creation entry points**: Long-form novels, Short, fanfic, spinoffs, style imitation, continuation, and cover generation now have first-class Studio entries instead of being hidden behind CLI-only workflows.
-- **Model and format resilience**: Weak-model formatting failures are less likely to crash a run outright. Provider errors, InkOS execution errors, and image generation failures are surfaced more separately, so debugging is clearer.
+- **Model and format resilience**: Weak-model formatting failures are less likely to crash a run outright. Provider errors, ZWorld execution errors, and image generation failures are surfaced more separately, so debugging is clearer.
 
 This release broadly improves older pain points: accidental natural-language triggers, "I said one thing, the system did another", long histories overwhelming the current instruction, context-window failures, invisible interactive-world state, and mixed text/image provider errors.
 
 <p align="center">
-  <img src="assets/inkos-short-demo-cover.png" width="210" alt="InkOS Short cover example">
-  <img src="assets/play-openworld-warcraft.png" width="210" alt="InkOS Play fantasy open-world example">
-  <img src="assets/play-openworld-romance.png" width="210" alt="InkOS Play romance example">
-  <img src="assets/play-openworld-detective.png" width="210" alt="InkOS Play detective example">
+  <img src="assets/inkos-short-demo-cover.png" width="210" alt="ZWorld Short cover example">
+  <img src="assets/play-openworld-warcraft.png" width="210" alt="ZWorld Play fantasy open-world example">
+  <img src="assets/play-openworld-romance.png" width="210" alt="ZWorld Play romance example">
+  <img src="assets/play-openworld-detective.png" width="210" alt="ZWorld Play detective example">
 </p>
 
 **Long-form novels** — create from a brief, generate foundations, chapter intent, context packages, prose, review, revision, and state settlement. Context is governed with protected / compressible layers so long books remain steerable.
 
-**InkOS Short** — Studio chat and CLI can create a complete standalone short-fiction package: full manuscript, outline records, review records, synopsis, selling points, cover prompt, and an optional cover image when a cover provider is configured.
+**ZWorld Short** — Studio chat and CLI can create a complete standalone short-fiction package: full manuscript, outline records, review records, synopsis, selling points, cover prompt, and an optional cover image when a cover provider is configured.
 
-**InkOS Play** — build open worlds or branching interactive fiction from natural-language world contracts: time flow, character agents, inventory, evidence, relationships, scene state, visual rules, guided choices, free actions, and optional image generation.
+**ZWorld Play** — build open worlds or branching interactive fiction from natural-language world contracts: time flow, character agents, inventory, evidence, relationships, scene state, visual rules, guided choices, free actions, and optional image generation.
 
 **Studio Chat** — a persistent chat surface for answering questions, proposing actions, creating books, launching Short / Play, generating covers, and editing text artifacts without pretending an action succeeded before the tool result exists.
 
 **Model setup** — Studio includes provider settings, model routing, cover-service settings, [kkaiapi](https://en.kkaiapi.com/) / OpenRouter aggregator entries, and custom OpenAI-compatible endpoints.
 
 <p align="center">
-  <img src="assets/play-item-warcraft.png" width="420" alt="InkOS Play item image example">
+  <img src="assets/play-item-warcraft.png" width="420" alt="ZWorld Play item image example">
 </p>
 
 **Native English novel writing now supported！** — 10 built-in English genre profiles with dedicated pacing rules, fatigue word lists, and audit dimensions. Set `--lang en` and go.
@@ -70,15 +70,15 @@ This release broadly improves older pain points: accidental natural-language tri
 ### Install
 
 ```bash
-npm i -g @actalk/inkos
+npm i -g @zworld/zworld
 ```
 
 ### Use via OpenClaw 🦞
 
-InkOS is published as an [OpenClaw](https://clawhub.ai/narcooo/inkos) Skill, callable by any compatible agent (Claude Code, OpenClaw, etc.):
+ZWorld is published as an [OpenClaw](https://clawhub.ai/narcooo/inkos) Skill, callable by any compatible agent (Claude Code, OpenClaw, etc.):
 
 ```bash
-clawhub install inkos          # Install from ClawHub
+clawhub install zworld          # Install from ClawHub
 ```
 
 If you installed via npm or cloned the repo, `skills/SKILL.md` is already included — 🦞 can read it directly without a separate ClawHub install.
@@ -86,23 +86,23 @@ If you installed via npm or cloned the repo, `skills/SKILL.md` is already includ
 Once installed, Claw should prefer the shared interaction entry:
 
 ```bash
-inkos interact --json --message "continue the current book, but keep the pacing tighter"
+zworld interact --json --message "continue the current book, but keep the pacing tighter"
 ```
 
 This routes through the same conversation executor used by the project TUI, so OpenClaw, TUI, and Studio stay on the same control brain. The current JSON output includes assistant response text and the interaction session; real completion should still be derived from tool results and files, not from prose claims.
 
-Atomic commands (`plan chapter` / `compose chapter` / `draft` / `audit` / `revise` / `write next`) are still available, but they are now lower-level tools rather than the preferred OpenClaw entry. You can also browse it on [ClawHub](https://clawhub.ai) by searching `inkos`.
+Atomic commands (`plan chapter` / `compose chapter` / `draft` / `audit` / `revise` / `write next`) are still available, but they are now lower-level tools rather than the preferred OpenClaw entry. You can also browse it on [ClawHub](https://clawhub.ai) by searching `zworld`.
 
 ### Configure
 
-InkOS now separates two configuration paths: **Studio uses visual service settings**, while **CLI / daemon / deployment can still use env overrides**. They do not silently overwrite each other.
+ZWorld now separates two configuration paths: **Studio uses visual service settings**, while **CLI / daemon / deployment can still use env overrides**. They do not silently overwrite each other.
 
 **Option 1: Studio service settings (recommended for local writing)**
 
 ```bash
-inkos init my-novel
+zworld init my-novel
 cd my-novel
-inkos
+zworld
 ```
 
 Open Studio, then go to **Model Settings**:
@@ -112,12 +112,12 @@ Open Studio, then go to **Model Settings**:
 3. Pick an available model and save.
 4. Return to Studio Chat or your book page.
 
-Studio uses project service settings and `.inkos/secrets.json`. It may show env-detection hints, but env files do not override the Studio-selected service/model/base URL/API key.
+Studio uses project service settings and `.zworld/secrets.json`. It may show env-detection hints, but env files do not override the Studio-selected service/model/base URL/API key.
 
 **Option 2: CLI / daemon / deployment env config**
 
 ```bash
-inkos config set-global \
+zworld config set-global \
   --lang en \
   --provider <openai|anthropic|custom> \
   --base-url <API endpoint> \
@@ -130,23 +130,23 @@ inkos config set-global \
 # model: your model name
 ```
 
-`--lang en` sets English as the default writing language for CLI / daemon runs. Saved to `~/.inkos/.env`.
+`--lang en` sets English as the default writing language for CLI / daemon runs. Saved to `~/.zworld/.env`.
 
-You can also edit global `~/.inkos/.env` or project `.env` manually:
+You can also edit global `~/.zworld/.env` or project `.env` manually:
 
 ```bash
 # Required
-INKOS_LLM_PROVIDER=                               # openai / anthropic / custom (use custom for any OpenAI-compatible API)
-INKOS_LLM_BASE_URL=                               # API endpoint
-INKOS_LLM_API_KEY=                                 # API Key
-INKOS_LLM_MODEL=                                   # Model name
+ZWORLD_LLM_PROVIDER=                               # openai / anthropic / custom (use custom for any OpenAI-compatible API)
+ZWORLD_LLM_BASE_URL=                               # API endpoint
+ZWORLD_LLM_API_KEY=                                 # API Key
+ZWORLD_LLM_MODEL=                                   # Model name
 
 # Language (defaults to global setting or genre default)
-# INKOS_DEFAULT_LANGUAGE=en                        # en or zh
+# ZWORLD_DEFAULT_LANGUAGE=en                        # en or zh
 
 # Optional
-# INKOS_LLM_TEMPERATURE=0.7                       # Temperature
-# INKOS_LLM_THINKING_BUDGET=0                      # Anthropic extended thinking budget
+# ZWORLD_LLM_TEMPERATURE=0.7                       # Temperature
+# ZWORLD_LLM_THINKING_BUDGET=0                      # Anthropic extended thinking budget
 ```
 
 CLI resolution starts from Studio/project service settings, then layers service secrets, global env, project env, process env, and CLI flags. That means CLI can reuse the service you configured in Studio, while env and command-line flags remain explicit overrides.
@@ -157,9 +157,9 @@ Assign different models to different agents — balance quality and cost:
 
 ```bash
 # Assign different models/providers to different agents
-inkos config set-model writer <model> --provider <provider> --base-url <url> --api-key-env <ENV_VAR>
-inkos config set-model auditor <model> --provider <provider>
-inkos config show-models        # View current routing
+zworld config set-model writer <model> --provider <provider> --base-url <url> --api-key-env <ENV_VAR>
+zworld config set-model auditor <model> --provider <provider>
+zworld config show-models        # View current routing
 ```
 
 Agents without explicit overrides fall back to the global model.
@@ -170,8 +170,8 @@ Agents without explicit overrides fall back to the global model.
 
 - **Studio Chat**: discuss, create books, run Short, generate covers, launch Play, and edit persistent files from one chat surface; heavy actions show confirmation cards.
 - **Creation entries**: Long-form Novel, Short Fiction, Fan Fiction, Spinoff, Style Imitation, Continuation, Branching Interactive, and Open World are available as first-class Studio entries.
-- **TUI dashboard**: `inkos tui` opens the terminal full-screen interaction mode for keyboard-first users.
-- **External agent entry**: `inkos interact --json --message "..."` remains the structured entry for OpenClaw and other agents.
+- **TUI dashboard**: `zworld tui` opens the terminal full-screen interaction mode for keyboard-first users.
+- **External agent entry**: `zworld interact --json --message "..."` remains the structured entry for OpenClaw and other agents.
 - **Atomic commands remain**: `plan` / `compose` / `draft` / `audit` / `revise` / `write next` still work for scripting and advanced usage.
 
 ### Write Your First Book
@@ -179,15 +179,15 @@ Agents without explicit overrides fall back to the global model.
 English is the default for English genre profiles. Pick a genre and go:
 
 ```bash
-inkos book create --title "The Last Delver" --genre litrpg     # LitRPG novel (English by default)
-inkos write next my-book          # Write next chapter (full pipeline: draft → audit → revise)
-inkos status                      # Check status
-inkos review list my-book         # Review drafts
-inkos review approve-all my-book  # Batch approve
-inkos export my-book --format epub  # Export EPUB (read on phone/Kindle)
+zworld book create --title "The Last Delver" --genre litrpg     # LitRPG novel (English by default)
+zworld write next my-book          # Write next chapter (full pipeline: draft → audit → revise)
+zworld status                      # Check status
+zworld review list my-book         # Review drafts
+zworld review approve-all my-book  # Batch approve
+zworld export my-book --format epub  # Export EPUB (read on phone/Kindle)
 ```
 
-Language is set per-genre by default. Override explicitly with `--lang en` or `--lang zh`. Use `inkos genre list` to see all available genres and their default languages.
+Language is set per-genre by default. Override explicitly with `--lang en` or `--lang zh`. Use `zworld genre list` to see all available genres and their default languages.
 
 ### Write Complete Short Fiction
 
@@ -200,7 +200,7 @@ Write a 12-chapter short fiction piece about a modern marriage reversal where th
 Or run it from the CLI:
 
 ```bash
-inkos short run \
+zworld short run \
   --direction "modern short fiction marriage reversal evidence-driven heroine" \
   --chapters 12 \
   --chars 1000
@@ -218,12 +218,12 @@ Generate a short-fiction cover for "The Divorce Papers He Regretted", modern cit
 
 The cover tool writes `covers/<title>/cover-prompt.md` and `covers/<title>/cover.png`. If no cover provider is configured yet, set the cover provider and API key in Studio model settings first.
 
-After generation, you can keep editing the cover prompt through chat, for example: "move the character closer, make the title text bigger, and give her a colder smile." InkOS will pass the revised direction as `coverPrompt`, rewrite `cover-prompt.md`, and regenerate the cover without rewriting the story.
+After generation, you can keep editing the cover prompt through chat, for example: "move the character closer, make the title text bigger, and give her a colder smile." ZWorld will pass the revised direction as `coverPrompt`, rewrite `cover-prompt.md`, and regenerate the cover without rewriting the story.
 
 <p align="center">
-  <img src="assets/inkos-short-demo-cover.png" width="260" alt="InkOS Short cover example">
-  <img src="assets/play-openworld-warcraft.png" width="260" alt="InkOS Play open-world example">
-  <img src="assets/play-openworld-detective.png" width="260" alt="InkOS Play detective example">
+  <img src="assets/inkos-short-demo-cover.png" width="260" alt="ZWorld Short cover example">
+  <img src="assets/play-openworld-warcraft.png" width="260" alt="ZWorld Play open-world example">
+  <img src="assets/play-openworld-detective.png" width="260" alt="ZWorld Play detective example">
 </p>
 
 ### Launch an Open World or Branching Story
@@ -234,13 +234,13 @@ In Studio Chat, choose **Open World** or **Branching Interactive**, then describ
 Create a Warcraft-like border watchtower open world. Time is not fixed per turn: patrols take an hour, training can take several days. Equipment has rarity, but no stat sheet; show rarity through material, glow, and atmosphere.
 ```
 
-InkOS creates the world, characters, items, evidence, relationships, current scene, and suggested actions. Open World supports free-form actions; Branching Interactive provides clickable choices. When image generation is configured, characters, items, evidence, and scenes can render images directly inside the chat stream.
+ZWorld creates the world, characters, items, evidence, relationships, current scene, and suggested actions. Open World supports free-form actions; Branching Interactive provides clickable choices. When image generation is configured, characters, items, evidence, and scenes can render images directly inside the chat stream.
 
 ---
 
 ## English Genre Profiles
 
-InkOS ships with 10 English-native genre profiles. Each includes genre-specific rules, pacing, fatigue word detection, and audit dimensions:
+ZWorld ships with 10 English-native genre profiles. Each includes genre-specific rules, pacing, fatigue word detection, and audit dimensions:
 
 | Genre | Key Mechanics |
 |-------|--------------|
@@ -267,7 +267,7 @@ Every genre includes a **fatigue word list** (e.g., "delve", "tapestry", "testam
 
 Studio Chat is not just a Q&A box. It can create long-form books, run Short, generate covers, launch Play, edit persistent text artifacts, and ask for confirmation before heavy actions. Plain discussion remains plain text; explicit creation requests become tool actions.
 
-### InkOS Play: Open Worlds and Branching Interaction
+### ZWorld Play: Open Worlds and Branching Interaction
 
 Play maintains a durable interactive world state: characters, locations, items, evidence, relationships, time, current scene, HUD, and images. It is not a hard-coded RPG system. A cultivation world may use rarity and realms; a romance story may use emotional stages; a detective story may use evidence lifecycle and credibility. The rules come from the user's world contract and stay in the world state.
 
@@ -279,11 +279,11 @@ De-AI-ification rules are baked into the Writer agent's prompts: fatigue word li
 
 ### Style Cloning
 
-`inkos style analyze` examines reference text and extracts a statistical fingerprint (sentence length distribution, word frequency patterns, rhythm profiles) plus an LLM-readable style guide. `inkos style import` injects this fingerprint into a book — all future chapters adopt the style, and the Reviser audits against it.
+`zworld style analyze` examines reference text and extracts a statistical fingerprint (sentence length distribution, word frequency patterns, rhythm profiles) plus an LLM-readable style guide. `zworld style import` injects this fingerprint into a book — all future chapters adopt the style, and the Reviser audits against it.
 
 ### Creative Brief
 
-`inkos book create --brief my-ideas.md` — pass your brainstorming notes, worldbuilding doc, or character sheets. The Architect agent builds from your brief (generating `story_bible.md` and `book_rules.md`) instead of inventing from scratch, and persists the brief into `story/author_intent.md` so the book's long-horizon intent does not disappear after initialization.
+`zworld book create --brief my-ideas.md` — pass your brainstorming notes, worldbuilding doc, or character sheets. The Architect agent builds from your brief (generating `story_bible.md` and `book_rules.md`) instead of inventing from scratch, and persists the brief into `story/author_intent.md` so the book's long-horizon intent does not disappear after initialization.
 
 ### Input Governance Control Surface
 
@@ -295,8 +295,8 @@ Every book now has two long-lived Markdown control docs:
 Before writing, you can run:
 
 ```bash
-inkos plan chapter my-book --context "Pull attention back to the mentor conflict first"
-inkos compose chapter my-book
+zworld plan chapter my-book --context "Pull attention back to the mentor conflict first"
+zworld compose chapter my-book
 ```
 
 This generates `story/runtime/chapter-XXXX.intent.md`, `context.json`, `rule-stack.yaml`, and `trace.json`. `intent.md` is the human-readable contract; the others are execution/debug artifacts. `plan` calls the LLM to produce the chapter intent; `compose` only compiles local documents and state, so it can run before you finish API key setup.
@@ -307,32 +307,32 @@ This generates `story/runtime/chapter-XXXX.intent.md`, `context.json`, `rule-sta
 
 - `--words` sets a target band, not an exact hard promise
 - Chinese chapters default to `zh_chars`; English chapters default to `en_words`
-- If the chapter drifts outside the soft band, InkOS may run one corrective normalization pass (compress or expand) instead of hard-cutting prose
-- If the chapter still misses the hard range after that one pass, InkOS still saves it, but surfaces a visible length warning and telemetry in the result and chapter index
+- If the chapter drifts outside the soft band, ZWorld may run one corrective normalization pass (compress or expand) instead of hard-cutting prose
+- If the chapter still misses the hard range after that one pass, ZWorld still saves it, but surfaces a visible length warning and telemetry in the result and chapter index
 
 ### Continuation Writing
 
-`inkos import chapters` imports existing novel text and rebuilds structured state, chapter summaries, hooks, character relationships, and readable Markdown projections. It supports `Chapter N`, custom split patterns, and resumable import. After import, `inkos write next` can continue the story.
+`zworld import chapters` imports existing novel text and rebuilds structured state, chapter summaries, hooks, character relationships, and readable Markdown projections. It supports `Chapter N`, custom split patterns, and resumable import. After import, `zworld write next` can continue the story.
 
 ### Fan Fiction
 
-`inkos fanfic init --from source.txt --mode canon` creates a fanfic book from source material. Four modes: canon (faithful continuation), au (alternate universe), ooc (out of character), cp (ship-focused). Includes a canon importer, fanfic-specific audit dimensions, and information boundary controls to keep lore consistent.
+`zworld fanfic init --from source.txt --mode canon` creates a fanfic book from source material. Four modes: canon (faithful continuation), au (alternate universe), ooc (out of character), cp (ship-focused). Includes a canon importer, fanfic-specific audit dimensions, and information boundary controls to keep lore consistent.
 
 ### Multi-Model Routing
 
-Different agents can use different models and providers. Writer on Claude (stronger creative), Auditor on GPT-4o (cheaper and fast), Radar on a local model (zero cost). `inkos config set-model` configures per-agent; unconfigured agents fall back to the global model.
+Different agents can use different models and providers. Writer on Claude (stronger creative), Auditor on GPT-4o (cheaper and fast), Radar on a local model (zero cost). `zworld config set-model` configures per-agent; unconfigured agents fall back to the global model.
 
 ### Daemon Mode + Notifications
 
-`inkos up` starts an autonomous background loop that writes chapters on a schedule. The pipeline continues through handleable non-critical issues, pausing with reviewable results when human judgment is needed. Notifications via Telegram and Webhook (HMAC-SHA256 signing + event filtering). Logs to `inkos.log` (JSON Lines), `-q` for quiet mode.
+`zworld up` starts an autonomous background loop that writes chapters on a schedule. The pipeline continues through handleable non-critical issues, pausing with reviewable results when human judgment is needed. Notifications via Telegram and Webhook (HMAC-SHA256 signing + event filtering). Logs to `zworld.log` (JSON Lines), `-q` for quiet mode.
 
 ### Local Model Compatibility
 
-Supports any OpenAI-compatible endpoint (`--provider custom`). Stream auto-fallback — when SSE isn't supported, InkOS retries with sync mode automatically. Fallback parser handles non-standard output from smaller models, and partial content recovery kicks in on stream interruption.
+Supports any OpenAI-compatible endpoint (`--provider custom`). Stream auto-fallback — when SSE isn't supported, ZWorld retries with sync mode automatically. Fallback parser handles non-standard output from smaller models, and partial content recovery kicks in on stream interruption.
 
 ### Reliability
 
-Every chapter creates an automatic state snapshot — `inkos write rewrite` rolls back any chapter to its pre-write state. The Writer outputs a pre-write checklist (context scope, resources, pending hooks, risks) and a post-write settlement table; the Auditor cross-validates both. File locking prevents concurrent writes. Post-write validator includes cross-chapter repetition detection and a dozen hard rules with auto spot-fix.
+Every chapter creates an automatic state snapshot — `zworld write rewrite` rolls back any chapter to its pre-write state. The Writer outputs a pre-write checklist (context scope, resources, pending hooks, risks) and a post-write settlement table; the Auditor cross-validates both. File locking prevents concurrent writes. Post-write validator includes cross-chapter repetition detection and a dozen hard rules with auto spot-fix.
 
 The hook system uses Zod schema validation — `lastAdvancedChapter` must be an integer, `status` can only be open/progressing/deferred/resolved. JSON deltas from the LLM are processed through `applyRuntimeStateDelta` (immutable update) and `validateRuntimeState` (structural check) before persistence. Corrupted data is rejected, not propagated.
 
@@ -342,7 +342,7 @@ Model output limits are managed by provider model cards in the provider bank. Re
 
 ## How It Works
 
-InkOS now has two main runtime tracks: long-form / short-form production for deliverable text, and Play for persistent interactive worlds. They share Studio Chat, model configuration, action confirmation, artifact preview, and provider handling, but their state models are different.
+ZWorld now has two main runtime tracks: long-form / short-form production for deliverable text, and Play for persistent interactive worlds. They share Studio Chat, model configuration, action confirmation, artifact preview, and provider handling, but their state models are different.
 
 <p align="center">
   <img src="assets/arch-system.svg" width="900" alt="System architecture">
@@ -391,7 +391,7 @@ On Node 22+, a SQLite temporal memory database (`story/memory.db`) is automatica
 
 ### Control Surface and Runtime Artifacts
 
-Alongside runtime state, InkOS splits guardrails from customization into reviewable control docs:
+Alongside runtime state, ZWorld splits guardrails from customization into reviewable control docs:
 
 - `story/author_intent.md`: long-horizon author intent
 - `story/current_focus.md`: near-term steering
@@ -400,7 +400,7 @@ Alongside runtime state, InkOS splits guardrails from customization into reviewa
 - `story/runtime/chapter-XXXX.rule-stack.yaml`: priority layers and override relationships
 - `story/runtime/chapter-XXXX.trace.json`: compilation trace for this chapter
 
-That means briefs, outline nodes, book rules, and current requests are no longer mashed into one prompt blob; InkOS compiles them first, then writes.
+That means briefs, outline nodes, book rules, and current requests are no longer mashed into one prompt blob; ZWorld compiles them first, then writes.
 
 ### Writing Rule System
 
@@ -410,16 +410,16 @@ On top of that, each genre has dedicated rules (prohibitions, language constrain
 
 ## Usage Modes
 
-InkOS provides four interaction modes, all sharing the same atomic operations:
+ZWorld provides four interaction modes, all sharing the same atomic operations:
 
 ### 1. Full Pipeline (One Command)
 
 ```bash
-inkos write next my-book              # Draft → audit → auto-revise, all in one
-inkos write next my-book --count 5    # Write 5 chapters in sequence
+zworld write next my-book              # Draft → audit → auto-revise, all in one
+zworld write next my-book --count 5    # Write 5 chapters in sequence
 ```
 
-`write next` now uses the `plan -> compose -> write` governance chain by default. If you need the older prompt-assembly path, set this explicitly in `inkos.json`:
+`write next` now uses the `plan -> compose -> write` governance chain by default. If you need the older prompt-assembly path, set this explicitly in `zworld.json`:
 
 ```json
 {
@@ -432,11 +432,11 @@ The default is now `v2`. `legacy` remains available as an explicit fallback.
 ### 2. Atomic Commands (Composable, External Agent Friendly)
 
 ```bash
-inkos plan chapter my-book --context "Focus on the mentor conflict first" --json
-inkos compose chapter my-book --json
-inkos draft my-book --context "Focus on the dungeon boss encounter and party dynamics" --json
-inkos audit my-book 31 --json
-inkos revise my-book 31 --json
+zworld plan chapter my-book --context "Focus on the mentor conflict first" --json
+zworld compose chapter my-book --json
+zworld draft my-book --context "Focus on the dungeon boss encounter and party dynamics" --json
+zworld audit my-book 31 --json
+zworld revise my-book 31 --json
 ```
 
 Each command performs a single operation independently. `--json` outputs structured data. `plan` / `compose` govern inputs; `draft` / `audit` / `revise` handle prose and quality checks. They can be called by external AI agents via `exec`, or used in scripts.
@@ -444,21 +444,21 @@ Each command performs a single operation independently. `--json` outputs structu
 ### 3. Natural Language Agent Mode
 
 ```bash
-inkos agent "Write a LitRPG novel where the MC is a healer class in a dungeon world"
-inkos agent "Write the next chapter, focus on the boss fight and loot distribution"
-inkos agent "Create a progression fantasy about a mage who can only use one spell"
+zworld agent "Write a LitRPG novel where the MC is a healer class in a dungeon world"
+zworld agent "Write the next chapter, focus on the boss fight and loot distribution"
+zworld agent "Create a progression fantasy about a mage who can only use one spell"
 ```
 
 Agent mode exposes tools according to the current session kind: book creation, control-surface edits, planning, composition, writing, audit, revision, Short, cover, and Play tools are only made available where they make sense. The recommended agent flow is: adjust the control surface first, then `plan` / `compose`, then choose draft-only or full-pipeline writing.
 
 ### 4. Studio Play Mode
 
-Studio's **Open World** and **Branching Interactive** entries launch interactive creation without first creating a book. Describe how the world runs, how time advances, whether characters act as agents, and how items/evidence matter. InkOS writes the result back to a local world state so the session can continue.
+Studio's **Open World** and **Branching Interactive** entries launch interactive creation without first creating a book. Describe how the world runs, how time advances, whether characters act as agents, and how items/evidence matter. ZWorld writes the result back to a local world state so the session can continue.
 
 ## Studio Screenshots and Run Outputs
 
 <p align="center">
-  <img src="assets/studio-dashboard.png" width="760" alt="InkOS Studio creation entry screenshot">
+  <img src="assets/studio-dashboard.png" width="760" alt="ZWorld Studio creation entry screenshot">
 </p>
 
 <p align="center">
@@ -468,56 +468,56 @@ Studio's **Open World** and **Branching Interactive** entries launch interactive
   <img src="assets/play-item-warcraft.png" width="230" alt="Interactive-world item image output">
 </p>
 
-The first image is a local Studio screenshot. The other images are real local outputs from InkOS Short and InkOS Play: mobile-first short-fiction covers, open-world scenes, detective evidence visuals, and item imagery.
+The first image is a local Studio screenshot. The other images are real local outputs from ZWorld Short and ZWorld Play: mobile-first short-fiction covers, open-world scenes, detective evidence visuals, and item imagery.
 
 ## CLI Reference
 
 | Command | Description |
 |---------|-------------|
-| `inkos init [name]` | Initialize project (omit name to init current directory) |
-| `inkos book create` | Create a new book (`--genre`, `--chapter-words`, `--target-chapters`, `--brief <file>`, `--lang en/zh`) |
-| `inkos book update [id]` | Update book settings (`--chapter-words`, `--target-chapters`, `--status`, `--lang`) |
-| `inkos book list` | List all books |
-| `inkos book delete <id>` | Delete a book and all its data (`--force` to skip confirmation) |
-| `inkos genre list/show/copy/create` | View, copy, or create genres |
-| `inkos plan chapter [id]` | Generate the next chapter's `intent.md` (`--context` / `--context-file` for current steering) |
-| `inkos compose chapter [id]` | Generate the next chapter's `context.json`, `rule-stack.yaml`, and `trace.json` |
-| `inkos write next [id]` | Full pipeline: write next chapter (`--words` to override, `--count` for batch, `-q` quiet mode) |
-| `inkos write rewrite [id] <n>` | Rewrite chapter N (restores state snapshot, `--force` to skip confirmation) |
-| `inkos draft [id]` | Write draft only (`--words` to override word count, `-q` quiet mode) |
-| `inkos audit [id] [n]` | Audit a specific chapter |
-| `inkos revise [id] [n]` | Revise a specific chapter |
-| `inkos agent <instruction>` | Natural language agent mode |
-| `inkos review list [id]` | Review drafts |
-| `inkos review approve-all [id]` | Batch approve |
-| `inkos status [id]` | Project status |
-| `inkos export [id]` | Export book (`--format txt/md/epub`, `--output <path>`, `--approved-only`) |
-| `inkos radar scan` | Scan market / trend inputs for new-book direction |
-| `inkos fanfic init` | Create a fanfic book from source material (`--from`, `--mode canon/au/ooc/cp`) |
-| `inkos short run` | Generate a standalone short-fiction package |
-| `inkos eval [id]` | Generate a quality evaluation report (`--json`, chapter ranges) |
-| `inkos consolidate [id]` | Consolidate chapter summaries for long-book context control |
-| `inkos interact` | External-agent / CLI natural-language entry (`--json`, `--message`, `--book`) |
-| `inkos config set-global` | Set global LLM config (~/.inkos/.env) |
-| `inkos config set-model <agent> <model>` | Per-agent model override (`--base-url`, `--provider`, `--api-key-env`) |
-| `inkos config show-models` | Show current model routing |
-| `inkos doctor` | Diagnose setup issues (API connectivity test + provider compatibility hints) |
-| `inkos detect [id] [n]` | AIGC detection (`--all` for all chapters, `--stats` for statistics) |
-| `inkos style analyze <file>` | Analyze reference text to extract style fingerprint |
-| `inkos style import <file> [id]` | Import style fingerprint into a book |
-| `inkos import canon [id] --from <parent>` | Import parent canon into a spinoff book |
-| `inkos import chapters [id] --from <path>` | Import existing chapters for continuation (`--split`, `--resume-from`) |
-| `inkos analytics [id]` / `inkos stats [id]` | Book analytics (audit pass rate, top issues, chapter ranking, token usage) |
-| `inkos update` | Update to the latest version |
-| `inkos` / `inkos studio` | Start web workbench (`-p` for port, default 4567) |
-| `inkos tui` | Start terminal full-screen TUI |
-| `inkos up / down` | Start/stop daemon (`-q` quiet mode, auto-writes `inkos.log`) |
+| `zworld init [name]` | Initialize project (omit name to init current directory) |
+| `zworld book create` | Create a new book (`--genre`, `--chapter-words`, `--target-chapters`, `--brief <file>`, `--lang en/zh`) |
+| `zworld book update [id]` | Update book settings (`--chapter-words`, `--target-chapters`, `--status`, `--lang`) |
+| `zworld book list` | List all books |
+| `zworld book delete <id>` | Delete a book and all its data (`--force` to skip confirmation) |
+| `zworld genre list/show/copy/create` | View, copy, or create genres |
+| `zworld plan chapter [id]` | Generate the next chapter's `intent.md` (`--context` / `--context-file` for current steering) |
+| `zworld compose chapter [id]` | Generate the next chapter's `context.json`, `rule-stack.yaml`, and `trace.json` |
+| `zworld write next [id]` | Full pipeline: write next chapter (`--words` to override, `--count` for batch, `-q` quiet mode) |
+| `zworld write rewrite [id] <n>` | Rewrite chapter N (restores state snapshot, `--force` to skip confirmation) |
+| `zworld draft [id]` | Write draft only (`--words` to override word count, `-q` quiet mode) |
+| `zworld audit [id] [n]` | Audit a specific chapter |
+| `zworld revise [id] [n]` | Revise a specific chapter |
+| `zworld agent <instruction>` | Natural language agent mode |
+| `zworld review list [id]` | Review drafts |
+| `zworld review approve-all [id]` | Batch approve |
+| `zworld status [id]` | Project status |
+| `zworld export [id]` | Export book (`--format txt/md/epub`, `--output <path>`, `--approved-only`) |
+| `zworld radar scan` | Scan market / trend inputs for new-book direction |
+| `zworld fanfic init` | Create a fanfic book from source material (`--from`, `--mode canon/au/ooc/cp`) |
+| `zworld short run` | Generate a standalone short-fiction package |
+| `zworld eval [id]` | Generate a quality evaluation report (`--json`, chapter ranges) |
+| `zworld consolidate [id]` | Consolidate chapter summaries for long-book context control |
+| `zworld interact` | External-agent / CLI natural-language entry (`--json`, `--message`, `--book`) |
+| `zworld config set-global` | Set global LLM config (~/.zworld/.env) |
+| `zworld config set-model <agent> <model>` | Per-agent model override (`--base-url`, `--provider`, `--api-key-env`) |
+| `zworld config show-models` | Show current model routing |
+| `zworld doctor` | Diagnose setup issues (API connectivity test + provider compatibility hints) |
+| `zworld detect [id] [n]` | AIGC detection (`--all` for all chapters, `--stats` for statistics) |
+| `zworld style analyze <file>` | Analyze reference text to extract style fingerprint |
+| `zworld style import <file> [id]` | Import style fingerprint into a book |
+| `zworld import canon [id] --from <parent>` | Import parent canon into a spinoff book |
+| `zworld import chapters [id] --from <path>` | Import existing chapters for continuation (`--split`, `--resume-from`) |
+| `zworld analytics [id]` / `zworld stats [id]` | Book analytics (audit pass rate, top issues, chapter ranking, token usage) |
+| `zworld update` | Update to the latest version |
+| `zworld` / `zworld studio` | Start web workbench (`-p` for port, default 4567) |
+| `zworld tui` | Start terminal full-screen TUI |
+| `zworld up / down` | Start/stop daemon (`-q` quiet mode, auto-writes `zworld.log`) |
 
 `[id]` is auto-detected when the project has only one book. All commands support `--json` for structured output. `draft` / `write next` / `plan chapter` / `compose chapter` accept `--context` for steering, and `--words` overrides the target chapter size. `book create` supports `--brief <file>` to pass a creative brief — the Architect builds from your ideas instead of generating from scratch. `plan chapter` calls the LLM to create chapter intent; `compose chapter` does not require a live LLM, so you can inspect governed inputs before finishing API setup.
 
 ## Roadmap
 
-- [x] ~~`packages/studio` Web UI workbench (Vite + React + Hono)~~ — shipped, run `inkos` or `inkos studio`
+- [x] ~~`packages/studio` Web UI workbench (Vite + React + Hono)~~ — shipped, run `zworld` or `zworld studio`
 - [x] ~~Interactive fiction / open worlds (branching choices + free actions + generated images)~~ — shipped in Studio Play
 - [ ] Partial chapter intervention (rewrite half a chapter + cascade truth file updates)
 - [ ] Custom agent plugin system
@@ -567,7 +567,7 @@ pnpm typecheck    # Type-check without emitting
 
 ## Acknowledgments
 
-InkOS's agent runtime is built on [pi](https://github.com/badlogic/pi-mono) (`@mariozechner/pi-ai` and `@mariozechner/pi-agent-core`) by Mario Zechner. Thanks to pi for the solid foundation.
+ZWorld's agent runtime is built on [pi](https://github.com/badlogic/pi-mono) (`@mariozechner/pi-ai` and `@mariozechner/pi-agent-core`) by Mario Zechner. Thanks to pi for the solid foundation.
 
 ## License
 
