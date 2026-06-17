@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(mkdir -p /Users/will/ai_workspace/zworld/.git/sdd)",
-      "Bash(echo \"Task 1: complete \\(commits c8b84c1..59f2f3a, review clean\\)\")",
-      "Bash(git -C /Users/will/ai_workspace/zworld rev-parse HEAD)"
-    ]
-  }
-}

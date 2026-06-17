@@ -1,8 +1,24 @@
 node_modules/
+
+# 敏感配置（API Key 等）
+.zworld/secrets.json
+**/.zworld/secrets.json
+**/.zworld/sessions/
+
+# IDE
+.idea/
+.vscode/
+
+# Claude Code 本地设置
+.claude/settings.local.json
+
 # novels 目录下的生成文件（书稿文本本身会被 git 追踪）
 novels/**/*.db
 novels/**/exports/
 novels/**/.env
+novels/.node-version
+novels/.nvmrc
+novels/.gitignore
 dist/
 .env
 .env.local
@@ -33,3 +49,4 @@ worlds/
 inkos.json
 prompt/
 CLAUDE.md
+zworld.json
