@@ -134,9 +134,9 @@ describe("public short-fiction chain", () => {
   });
 
   it("resolves cover generation from project cover config and stored cover secret", async () => {
-    const root = await mkdtemp(join(tmpdir(), "inkos-short-cover-"));
+    const root = await mkdtemp(join(tmpdir(), "zworld-short-cover-"));
     try {
-      await writeFile(join(root, "inkos.json"), JSON.stringify({
+      await writeFile(join(root, "zworld.json"), JSON.stringify({
         name: "cover-test",
         version: "0.1.0",
         language: "zh",
@@ -199,9 +199,9 @@ describe("public short-fiction chain", () => {
   });
 
   it("generates a standalone cover artifact without running the short fiction pipeline", async () => {
-    const root = await mkdtemp(join(tmpdir(), "inkos-cover-tool-"));
+    const root = await mkdtemp(join(tmpdir(), "zworld-cover-tool-"));
     const originalFetch = globalThis.fetch;
-    process.env.INKOS_TEST_COVER_KEY = "sk-cover";
+    process.env.ZWORLD_TEST_COVER_KEY = "sk-cover";
     try {
       const fetchMock = vi.fn(async (_url: unknown, _init?: { readonly body?: unknown }) => new Response(JSON.stringify({
         data: [{ b64_json: "ZmFrZQ==" }],
@@ -217,7 +217,7 @@ describe("public short-fiction chain", () => {
         outputDir: "covers/demo",
         coverEndpoint: "https://images.example.test/v1/images/generations",
         coverModel: "gpt-image-2",
-        coverApiKeyEnv: "INKOS_TEST_COVER_KEY",
+        coverApiKeyEnv: "ZWORLD_TEST_COVER_KEY",
       });
 
       expect(result.coverPromptPath).toBe("covers/demo/cover-prompt.md");
@@ -240,7 +240,7 @@ describe("public short-fiction chain", () => {
       expect(body).not.toContain("固定模板");
     } finally {
       globalThis.fetch = originalFetch;
-      delete process.env.INKOS_TEST_COVER_KEY;
+      delete process.env.ZWORLD_TEST_COVER_KEY;
       await rm(root, { recursive: true, force: true });
     }
   });

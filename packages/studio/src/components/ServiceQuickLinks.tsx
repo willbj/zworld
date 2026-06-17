@@ -7,10 +7,10 @@ interface ServiceQuickLink {
 
 const SERVICE_QUICK_LINKS: Record<string, ReadonlyArray<ServiceQuickLink>> = {
   kimicode: [
-    { label: "官网", href: "https://www.kimi.com?aff=inkos" },
+    { label: "官网", href: "https://www.kimi.com?aff=zworld" },
   ],
   kimiCodingPlan: [
-    { label: "官网", href: "https://www.kimi.com?aff=inkos" },
+    { label: "官网", href: "https://www.kimi.com?aff=zworld" },
   ],
   kkaiapi: [
     { label: "官网", href: "https://kkaiapi.com/" },
@@ -18,7 +18,7 @@ const SERVICE_QUICK_LINKS: Record<string, ReadonlyArray<ServiceQuickLink>> = {
     { label: "模型/价格", href: "https://kkaiapi.com/models" },
   ],
   moonshot: [
-    { label: "开放平台", href: "https://platform.kimi.com?aff=inkos" },
+    { label: "开放平台", href: "https://platform.kimi.com?aff=zworld" },
   ],
   openrouter: [
     { label: "API Keys", href: "https://openrouter.ai/keys" },

@@ -7,9 +7,9 @@
  * - API 文档：https://docs.anthropic.com/en/api/
  * - 模型列表：https://docs.anthropic.com/en/docs/about-claude/models/overview
  */
-import type { InkosEndpoint } from "../types.js";
+import type { ZworldEndpoint } from "../types.js";
 
-export const ANTHROPIC: InkosEndpoint = {
+export const ANTHROPIC: ZworldEndpoint = {
   id: "anthropic",
   label: "Anthropic",
   group: "overseas",

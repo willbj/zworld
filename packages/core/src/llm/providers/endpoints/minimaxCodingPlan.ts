@@ -4,9 +4,9 @@
  * - 官网：https://platform.minimaxi.com/
  * - MiniMax 针对编程场景的订阅套餐。
  */
-import type { InkosEndpoint } from "../types.js";
+import type { ZworldEndpoint } from "../types.js";
 
-export const MINIMAX_CODING_PLAN: InkosEndpoint = {
+export const MINIMAX_CODING_PLAN: ZworldEndpoint = {
   id: "minimaxCodingPlan",
   label: "MiniMax Coding Plan",
   group: "codingPlan",

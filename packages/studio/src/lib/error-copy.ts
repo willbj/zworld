@@ -23,8 +23,8 @@ const KNOWN_RUNTIME_REPLACEMENTS: ReadonlyArray<{
     replacement: "Studio 模型 API Key 未设置。请打开“模型配置”，为当前服务保存 API Key。",
   },
   {
-    pattern: /INKOS_LLM_API_KEY not set\. Run 'inkos config set-global' or add it to project \.env file\./g,
-    replacement: "INKOS_LLM_API_KEY 未设置。请运行 `inkos config set-global`，或在项目 .env 文件中添加它。",
+    pattern: /ZWORLD_LLM_API_KEY not set\. Run 'zworld config set-global' or add it to project \.env file\./g,
+    replacement: "ZWORLD_LLM_API_KEY 未设置。请运行 `zworld config set-global`，或在项目 .env 文件中添加它。",
   },
 ];
 

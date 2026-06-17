@@ -83,7 +83,7 @@ describe("PlayRunner", () => {
   let root: string;
 
   beforeEach(async () => {
-    root = await mkdtemp(join(tmpdir(), "inkos-play-runner-"));
+    root = await mkdtemp(join(tmpdir(), "zworld-play-runner-"));
   });
 
   afterEach(async () => {

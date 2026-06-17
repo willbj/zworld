@@ -1,7 +1,7 @@
 {
   "name": "@zworld/studio",
   "version": "1.5.0",
-  "description": "InkOS Studio — Web workbench for novel writing",
+  "description": "ZWorld Studio — Web workbench for novel writing",
   "type": "module",
   "main": "dist/api/index.js",
   "types": "dist/api/index.d.ts",
@@ -12,16 +12,16 @@
   "license": "AGPL-3.0-only",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Narcooo/inkos.git",
+    "url": "https://github.com/Narcooo/zworld.git",
     "directory": "packages/studio"
   },
   "scripts": {
     "prepack": "npm run build && node ../../scripts/prepare-package-for-publish.mjs",
     "postpack": "node ../../scripts/restore-package-json.mjs",
     "prepublishOnly": "node ../../scripts/verify-no-workspace-protocol.mjs .",
-    "dev": "INKOS_STUDIO_PORT=4569 INKOS_PROJECT_ROOT=../.. tsx watch --clear-screen=false src/api/index.ts & vite --host --port 4567 ; kill %1 2>/dev/null",
+    "dev": "ZWORLD_STUDIO_PORT=4569 ZWORLD_PROJECT_ROOT=../.. tsx watch --clear-screen=false src/api/index.ts & vite --host --port 4567 ; kill %1 2>/dev/null",
     "dev:client": "vite --host --port 4567",
-    "dev:server": "INKOS_STUDIO_PORT=4569 INKOS_PROJECT_ROOT=../.. tsx watch src/api/index.ts",
+    "dev:server": "ZWORLD_STUDIO_PORT=4569 ZWORLD_PROJECT_ROOT=../.. tsx watch src/api/index.ts",
     "build": "npm run build:client && npm run build:server",
     "build:client": "vite build",
     "build:server": "tsc -p tsconfig.server.json",

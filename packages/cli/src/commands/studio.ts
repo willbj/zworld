@@ -97,12 +97,12 @@ export async function resolveStudioLaunch(root: string): Promise<StudioLaunchSpe
   }
 
   const builtEntry = await firstAccessiblePath([
-    join(root, "node_modules", "@actalk", "inkos-studio", "dist", "api", "index.js"),
-    join(root, "node_modules", "@actalk", "inkos-studio", "server.cjs"),
-    join(cliPackageRoot, "node_modules", "@actalk", "inkos-studio", "dist", "api", "index.js"),
-    join(cliPackageRoot, "node_modules", "@actalk", "inkos-studio", "server.cjs"),
-    join(cliPackageRoot, "..", "inkos-studio", "dist", "api", "index.js"),
-    join(cliPackageRoot, "..", "inkos-studio", "server.cjs"),
+    join(root, "node_modules", "@actalk", "zworld-studio", "dist", "api", "index.js"),
+    join(root, "node_modules", "@actalk", "zworld-studio", "server.cjs"),
+    join(cliPackageRoot, "node_modules", "@actalk", "zworld-studio", "dist", "api", "index.js"),
+    join(cliPackageRoot, "node_modules", "@actalk", "zworld-studio", "server.cjs"),
+    join(cliPackageRoot, "..", "zworld-studio", "dist", "api", "index.js"),
+    join(cliPackageRoot, "..", "zworld-studio", "server.cjs"),
   ]);
   if (builtEntry) {
     return {
@@ -124,19 +124,19 @@ export async function launchStudioWorkbench(root: string, port: string): Promise
 
   if (!launch) {
     logError(
-      "InkOS Studio not found. If you cloned the repo, run:\n" +
+      "ZWorld Studio not found. If you cloned the repo, run:\n" +
       "  cd packages/studio && pnpm install && pnpm build\n" +
-      "Then run 'inkos studio' from the project root.",
+      "Then run 'zworld studio' from the project root.",
     );
     process.exit(1);
   }
 
-  log(`Starting InkOS Studio on ${url}`);
+  log(`Starting ZWorld Studio on ${url}`);
 
   const child = spawn(launch.command, launch.args, {
     cwd: root,
     stdio: "inherit",
-    env: { ...process.env, INKOS_STUDIO_PORT: port },
+    env: { ...process.env, ZWORLD_STUDIO_PORT: port },
   });
 
   child.on("error", (e) => {
@@ -169,7 +169,7 @@ export async function launchStudioEntry(
 ): Promise<void> {
   const prepared = await prepareStudioRoot(root);
   if (prepared.initialized) {
-    log(`No inkos.json found in ${root}. Initialized a minimal InkOS project for Studio.`);
+    log(`No zworld.json found in ${root}. Initialized a minimal ZWorld project for Studio.`);
   }
 
   if (hooks.launchStudio) {
@@ -182,7 +182,7 @@ export async function launchStudioEntry(
 
 export function createStudioCommand(hooks: StudioCommandHooks = {}): Command {
   return new Command("studio")
-  .description("Start InkOS Studio web workbench")
+  .description("Start ZWorld Studio web workbench")
   .option("-p, --port <port>", "Server port", "4567")
   .action(async (opts) => {
     const root = findProjectRoot();

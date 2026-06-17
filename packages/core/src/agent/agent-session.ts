@@ -80,7 +80,7 @@ export interface AgentSessionConfig {
   model: Model<Api> | { provider: string; modelId: string };
   /** Optional API key. When omitted, falls back to env-based key lookup. */
   apiKey?: string;
-  /** Allow the read tool to read absolute paths outside projectRoot/books. Defaults to false; set INKOS_AGENT_ALLOW_SYSTEM_READ=1 to enable. */
+  /** Allow the read tool to read absolute paths outside projectRoot/books. Defaults to false; set ZWORLD_AGENT_ALLOW_SYSTEM_READ=1 to enable. */
   allowSystemFileRead?: boolean;
   /** Optional listener for streaming events (for SSE forwarding). */
   onEvent?: (event: AgentEvent) => void;
@@ -452,7 +452,7 @@ function convertAgentMessagesForModel(messages: AgentMessage[], model: Model<Api
   });
 
   const candidate = model as { api?: unknown; baseUrl?: unknown };
-  // InkOS's internal `toolResult` role is not part of the OpenAI Chat Completions spec.
+  // ZWorld's internal `toolResult` role is not part of the OpenAI Chat Completions spec.
   // Many openai-completions upstreams (Google, and kkaiapi/DeepSeek-Pro-style gateways) reject
   // it outright — which surfaces as an opaque "503 provider temporarily unavailable" — so fold
   // tool results into a plain user message for EVERY openai-completions endpoint, not just Google.
@@ -744,7 +744,7 @@ async function runAgentSessionUnlocked(
   const actionPayloadKey = actionPayloadCacheKey(actionPayload);
   const model = resolveModel(config.model);
   const requestedModelIdentity = agentModelIdentity(model);
-  const allowSystemFileRead = config.allowSystemFileRead ?? envFlagEnabled(process.env.INKOS_AGENT_ALLOW_SYSTEM_READ, false);
+  const allowSystemFileRead = config.allowSystemFileRead ?? envFlagEnabled(process.env.ZWORLD_AGENT_ALLOW_SYSTEM_READ, false);
   const playWorldExists = sessionKind === "play"
     ? Boolean(await new PlayStore(projectRoot).loadWorld(sessionId))
     : false;

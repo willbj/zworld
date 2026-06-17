@@ -3215,7 +3215,7 @@ ${matrix}`,
   }
 
   private async logMemoryIndexDebugInfo(bookId: string, error: unknown): Promise<void> {
-    if (process.env.INKOS_DEBUG_SQLITE_MEMORY !== "1") {
+    if (process.env.ZWORLD_DEBUG_SQLITE_MEMORY !== "1") {
       return;
     }
 

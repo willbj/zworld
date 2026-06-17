@@ -69,7 +69,7 @@ fanficCommand
           fanficMode: mode,
           source: sourceName,
           location: `books/${bookId}/`,
-          nextStep: `inkos write next ${bookId}`,
+          nextStep: `zworld write next ${bookId}`,
         }, null, 2));
       } else {
         log(`Fanfic created: ${bookId}`);
@@ -77,7 +77,7 @@ fanficCommand
         log(`  Location: books/${bookId}/`);
         log(`  fanfic_canon.md + foundation generated.`);
         log("");
-        log(`Next: inkos write next ${bookId}`);
+        log(`Next: zworld write next ${bookId}`);
       }
     } catch (e) {
       if (opts.json) {
@@ -107,7 +107,7 @@ fanficCommand
       try {
         canon = await readFile(join(bookDir, "story/fanfic_canon.md"), "utf-8");
       } catch {
-        throw new Error(`该书没有同人正典文件。用 inkos fanfic init 创建同人书。`);
+        throw new Error(`该书没有同人正典文件。用 zworld fanfic init 创建同人书。`);
       }
 
       if (opts.json) {

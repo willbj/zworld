@@ -53,7 +53,7 @@ describe("agent play tools", () => {
   let root: string;
 
   beforeEach(async () => {
-    root = await mkdtemp(join(tmpdir(), "inkos-agent-play-"));
+    root = await mkdtemp(join(tmpdir(), "zworld-agent-play-"));
   });
 
   afterEach(async () => {

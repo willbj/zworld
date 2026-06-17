@@ -414,7 +414,7 @@ function resolveExternalChatEditPath(root: string, requestedPath: string): { pat
   if (!CHAT_EDIT_ALLOWED_ROOTS.has(first)) {
     throw new ApiError(400, "UNSUPPORTED_CHAT_EDIT_TARGET", "Chat external edits cannot modify source code, config, or arbitrary project files.");
   }
-  if (rel.includes("/.inkos/") || rel.endsWith("/.inkos") || rel.includes("/secrets") || rel.endsWith(".env")) {
+  if (rel.includes("/.zworld/") || rel.endsWith("/.zworld") || rel.includes("/secrets") || rel.endsWith(".env")) {
     throw new ApiError(400, "UNSUPPORTED_CHAT_EDIT_TARGET", "Chat external edits cannot modify secrets or runtime internals.");
   }
   if (!CHAT_EDIT_TEXT_EXTENSIONS.test(rel)) {
@@ -619,7 +619,7 @@ function formatAgentFailure(message: string): { readonly code: string; readonly 
     return { code: "AGENT_LLM_ERROR", message, status: 502 };
   }
   if (kind === "internal") {
-    return { code: "AGENT_INTERNAL_ERROR", message: `InkOS 内部流程错误：${message}`, status: 500 };
+    return { code: "AGENT_INTERNAL_ERROR", message: `ZWorld 内部流程错误：${message}`, status: 500 };
   }
   return { code: "AGENT_ERROR", message, status: 500 };
 }
@@ -1101,13 +1101,13 @@ function syncTopLevelLlmMirror(llm: Record<string, unknown>): void {
 }
 
 async function loadRawConfig(root: string): Promise<Record<string, unknown>> {
-  const configPath = join(root, "inkos.json");
+  const configPath = join(root, "zworld.json");
   const raw = await readFile(configPath, "utf-8");
   return JSON.parse(raw) as Record<string, unknown>;
 }
 
 async function saveRawConfig(root: string, config: Record<string, unknown>): Promise<void> {
-  await writeFile(join(root, "inkos.json"), JSON.stringify(config, null, 2), "utf-8");
+  await writeFile(join(root, "zworld.json"), JSON.stringify(config, null, 2), "utf-8");
 }
 
 function unquoteEnvValue(value: string): string {
@@ -1143,11 +1143,11 @@ async function readEnvConfigValues(path: string): Promise<EnvConfigValues> {
       values.set(key, unquoteEnvValue(value));
     }
 
-    const provider = values.get("INKOS_LLM_PROVIDER") ?? null;
-    const service = values.get("INKOS_LLM_SERVICE") ?? null;
-    const baseUrl = values.get("INKOS_LLM_BASE_URL") ?? null;
-    const model = values.get("INKOS_LLM_MODEL") ?? null;
-    const apiKey = values.get("INKOS_LLM_API_KEY") ?? "";
+    const provider = values.get("ZWORLD_LLM_PROVIDER") ?? null;
+    const service = values.get("ZWORLD_LLM_SERVICE") ?? null;
+    const baseUrl = values.get("ZWORLD_LLM_BASE_URL") ?? null;
+    const model = values.get("ZWORLD_LLM_MODEL") ?? null;
+    const apiKey = values.get("ZWORLD_LLM_API_KEY") ?? "";
     const detected = Boolean(provider || service || baseUrl || model || apiKey);
 
     return {
@@ -1656,7 +1656,7 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
       return c.json({ error: { code: error.code, message: error.message } }, error.status as 400);
     }
     const message = error instanceof Error ? error.message : String(error);
-    if (message.includes("LLM API key not set") || message.includes("INKOS_LLM_API_KEY not set")) {
+    if (message.includes("LLM API key not set") || message.includes("ZWORLD_LLM_API_KEY not set")) {
       return c.json({ error: { code: "LLM_CONFIG_ERROR", message } }, 400);
     }
     console.error("[studio] Unexpected server error", error);
@@ -2272,7 +2272,7 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
       connected: Boolean(secrets.services[ep.id]?.apiKey),
     })).sort(compareServiceListItems);
 
-    // Add custom services from inkos.json
+    // Add custom services from zworld.json
     try {
       const config = await loadRawConfig(root);
       for (const svc of normalizeServiceConfig((config.llm as Record<string, unknown> | undefined)?.services)) {
@@ -2310,7 +2310,7 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
     const env = await readEffectiveEnvConfigValues(root);
     if (!env || !env.values.apiKey) {
       return c.json({
-        error: "未检测到可导入的 LLM 环境变量配置，或缺少 INKOS_LLM_API_KEY。",
+        error: "未检测到可导入的 LLM 环境变量配置，或缺少 ZWORLD_LLM_API_KEY。",
       }, 400);
     }
 
@@ -2390,8 +2390,8 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
     // endpoint is provided via env (the CLI/power-user path). This is the gate
     // for the Play auto-illustration toggles.
     const envConfigured = Boolean(
-      (process.env.INKOS_COVER_BASE_URL || process.env.INKOS_COVER_ENDPOINT)
-      && (process.env.INKOS_COVER_API_KEY || keyFor("kkaiapi")),
+      (process.env.ZWORLD_COVER_BASE_URL || process.env.ZWORLD_COVER_ENDPOINT)
+      && (process.env.ZWORLD_COVER_API_KEY || keyFor("kkaiapi")),
     );
     const configured = Boolean(cover?.service && keyFor(cover.service)) || envConfigured;
     return c.json({
@@ -2679,8 +2679,8 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
 
   app.get("/api/v1/project", async (c) => {
     const currentConfig = await loadCurrentProjectConfig({ requireApiKey: false });
-    // Check if language was explicitly set in inkos.json (not just the schema default)
-    const raw = JSON.parse(await readFile(join(root, "inkos.json"), "utf-8"));
+    // Check if language was explicitly set in zworld.json (not just the schema default)
+    const raw = JSON.parse(await readFile(join(root, "zworld.json"), "utf-8"));
     const languageExplicit = "language" in raw && raw.language !== "";
 
     return c.json({
@@ -2715,7 +2715,7 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
 
   app.put("/api/v1/project", async (c) => {
     const updates = await c.req.json<Record<string, unknown>>();
-    const configPath = join(root, "inkos.json");
+    const configPath = join(root, "zworld.json");
     try {
       const raw = await readFile(configPath, "utf-8");
       const existing = JSON.parse(raw);
@@ -2738,7 +2738,7 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
   });
 
   app.get("/api/v1/project/input-governance-mode", async (c) => {
-    const raw = JSON.parse(await readFile(join(root, "inkos.json"), "utf-8"));
+    const raw = JSON.parse(await readFile(join(root, "zworld.json"), "utf-8"));
     return c.json({ mode: raw.inputGovernanceMode === "legacy" ? "legacy" : "v2" });
   });
 
@@ -2748,7 +2748,7 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
     if (!parsed.success) {
       return c.json({ error: "mode must be legacy or v2" }, 400);
     }
-    const configPath = join(root, "inkos.json");
+    const configPath = join(root, "zworld.json");
     const raw = JSON.parse(await readFile(configPath, "utf-8"));
     raw.inputGovernanceMode = parsed.data;
     const { writeFile: writeFileFs } = await import("node:fs/promises");
@@ -2757,13 +2757,13 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
   });
 
   app.get("/api/v1/project/detection", async (c) => {
-    const raw = JSON.parse(await readFile(join(root, "inkos.json"), "utf-8"));
+    const raw = JSON.parse(await readFile(join(root, "zworld.json"), "utf-8"));
     return c.json({ detection: raw.detection ?? null });
   });
 
   app.put("/api/v1/project/detection", async (c) => {
     const { detection } = await c.req.json<{ detection?: unknown }>();
-    const configPath = join(root, "inkos.json");
+    const configPath = join(root, "zworld.json");
     const raw = JSON.parse(await readFile(configPath, "utf-8"));
     if (detection === null) {
       delete raw.detection;
@@ -2910,7 +2910,7 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
   // --- Logs ---
 
   app.get("/api/v1/logs", async (c) => {
-    const logPath = join(root, "inkos.log");
+    const logPath = join(root, "zworld.log");
     try {
       const content = await readFile(logPath, "utf-8");
       const lines = content.trim().split("\n").slice(-100);
@@ -3904,7 +3904,7 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
 
   app.post("/api/v1/project/language", async (c) => {
     const { language } = await c.req.json<{ language: "zh" | "en" }>();
-    const configPath = join(root, "inkos.json");
+    const configPath = join(root, "zworld.json");
     try {
       const raw = await readFile(configPath, "utf-8");
       const existing = JSON.parse(raw);
@@ -4082,13 +4082,13 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
   // --- Model overrides ---
 
   app.get("/api/v1/project/model-overrides", async (c) => {
-    const raw = JSON.parse(await readFile(join(root, "inkos.json"), "utf-8"));
+    const raw = JSON.parse(await readFile(join(root, "zworld.json"), "utf-8"));
     return c.json({ overrides: raw.modelOverrides ?? {} });
   });
 
   app.put("/api/v1/project/model-overrides", async (c) => {
     const { overrides } = await c.req.json<{ overrides: Record<string, unknown> }>();
-    const configPath = join(root, "inkos.json");
+    const configPath = join(root, "zworld.json");
     const raw = JSON.parse(await readFile(configPath, "utf-8"));
     raw.modelOverrides = overrides;
     const { writeFile: writeFileFs } = await import("node:fs/promises");
@@ -4099,14 +4099,14 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
   // --- Chapter review mode (C4a: auto pipeline vs manual checkpoint) ---
 
   app.get("/api/v1/project/chapter-review-mode", async (c) => {
-    const raw = JSON.parse(await readFile(join(root, "inkos.json"), "utf-8"));
+    const raw = JSON.parse(await readFile(join(root, "zworld.json"), "utf-8"));
     return c.json({ mode: raw.writing?.reviewMode === "manual" ? "manual" : "auto" });
   });
 
   app.put("/api/v1/project/chapter-review-mode", async (c) => {
     const { mode } = await c.req.json<{ mode?: string }>();
     const next = mode === "manual" ? "manual" : "auto";
-    const configPath = join(root, "inkos.json");
+    const configPath = join(root, "zworld.json");
     const raw = JSON.parse(await readFile(configPath, "utf-8"));
     raw.writing = { ...(raw.writing ?? {}), reviewMode: next };
     const { writeFile: writeFileFs } = await import("node:fs/promises");
@@ -4117,13 +4117,13 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
   // --- Notify channels ---
 
   app.get("/api/v1/project/notify", async (c) => {
-    const raw = JSON.parse(await readFile(join(root, "inkos.json"), "utf-8"));
+    const raw = JSON.parse(await readFile(join(root, "zworld.json"), "utf-8"));
     return c.json({ channels: raw.notify ?? [] });
   });
 
   app.put("/api/v1/project/notify", async (c) => {
     const { channels } = await c.req.json<{ channels: unknown[] }>();
-    const configPath = join(root, "inkos.json");
+    const configPath = join(root, "zworld.json");
     const raw = JSON.parse(await readFile(configPath, "utf-8"));
     raw.notify = channels;
     const { writeFile: writeFileFs } = await import("node:fs/promises");
@@ -4699,7 +4699,7 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
     const { GLOBAL_ENV_PATH } = await import("@zworld/core");
 
     const checks = {
-      inkosJson: existsSync(join(root, "inkos.json")),
+      zworldJson: existsSync(join(root, "zworld.json")),
       projectEnv: existsSync(join(root, ".env")),
       globalEnv: existsSync(GLOBAL_ENV_PATH),
       booksDir: existsSync(join(root, "books")),
@@ -4791,6 +4791,6 @@ export async function startStudioServer(
     }
   }
 
-  console.log(`InkOS Studio running on http://localhost:${port}`);
+  console.log(`ZWorld Studio running on http://localhost:${port}`);
   serve({ fetch: app.fetch, port });
 }

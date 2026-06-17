@@ -119,9 +119,9 @@ function renderPersistedPlanMarkdown(
     `Chapter: ${memo.chapter}`,
     `Golden Opening: ${memo.isGoldenOpening ? "yes" : "no"}`,
     "",
-    "<!-- INKOS_PLAN_MEMO_START -->",
+    "<!-- ZWORLD_PLAN_MEMO_START -->",
     renderMemoMarkdown(memo),
-    "<!-- INKOS_PLAN_MEMO_END -->",
+    "<!-- ZWORLD_PLAN_MEMO_END -->",
     "",
     "## Intent",
     `Intent Goal: ${intent.goal}`,
@@ -162,7 +162,7 @@ function renderList(items: ReadonlyArray<string>): string {
 }
 
 function extractMarkedBlock(markdown: string, name: string): string | undefined {
-  const match = markdown.match(new RegExp(`<!--\\s*INKOS_PLAN_${name}_START\\s*-->\\s*([\\s\\S]*?)\\s*<!--\\s*INKOS_PLAN_${name}_END\\s*-->`, "m"));
+  const match = markdown.match(new RegExp(`<!--\\s*ZWORLD_PLAN_${name}_START\\s*-->\\s*([\\s\\S]*?)\\s*<!--\\s*ZWORLD_PLAN_${name}_END\\s*-->`, "m"));
   return match?.[1]?.trim();
 }
 

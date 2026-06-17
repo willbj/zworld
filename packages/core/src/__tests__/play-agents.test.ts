@@ -11,7 +11,7 @@ import { PlayMutationSchema } from "../models/play.js";
 const ctx = {
   client: { provider: "openai" } as never,
   model: "test-model",
-  projectRoot: "/tmp/inkos-play-test",
+  projectRoot: "/tmp/zworld-play-test",
 };
 
 describe("play agents", () => {
