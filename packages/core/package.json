@@ -1,5 +1,5 @@
 {
-  "name": "@actalk/inkos-core",
+  "name": "@zworld/core",
   "version": "1.5.0",
   "description": "InkOS core engine — multi-agent novel writing pipeline with 33-dimension continuity audit, style cloning, and de-AI-ification",
   "keywords": [

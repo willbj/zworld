@@ -1,5 +1,5 @@
 {
-  "name": "inkos",
+  "name": "zworld",
   "version": "1.5.0",
   "private": true,
   "description": "Autonomous AI novel writing CLI agent — 10-agent pipeline that writes, audits, and revises novels with continuity tracking",
