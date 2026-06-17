@@ -5,6 +5,10 @@ node_modules/
 **/.zworld/secrets.json
 **/.zworld/sessions/
 
+# Studio 运行时文件
+.zworld-studio.pid
+.zworld-studio.log
+
 # IDE
 .idea/
 .vscode/

@@ -83,9 +83,11 @@ zworld/
 #### 每次启动
 
 ```bash
-./start.sh              # 启动 Studio，浏览器自动打开
-./start.sh restart      # 杀掉旧进程后重启（端口占用时用这个）
-./start.sh stop         # 停止 Studio
+./start.sh              # 后台启动，终端立即返回，浏览器自动打开
+./start.sh restart      # 重启（自动停旧进程再启动）
+./start.sh stop         # 停止
+./start.sh status       # 查看是否在运行
+./start.sh log          # 实时查看日志（Ctrl+C 退出）
 ./start.sh book create --title "吞天魔帝" --genre xuanhuan
 ./start.sh write next 吞天魔帝
 ```
