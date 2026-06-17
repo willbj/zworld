@@ -1,4 +1,8 @@
 node_modules/
+# novels 目录下的生成文件（书稿文本本身会被 git 追踪）
+novels/**/*.db
+novels/**/exports/
+novels/**/.env
 dist/
 .env
 .env.local

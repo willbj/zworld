@@ -97,12 +97,12 @@ export async function resolveStudioLaunch(root: string): Promise<StudioLaunchSpe
   }
 
   const builtEntry = await firstAccessiblePath([
-    join(root, "node_modules", "@actalk", "zworld-studio", "dist", "api", "index.js"),
-    join(root, "node_modules", "@actalk", "zworld-studio", "server.cjs"),
-    join(cliPackageRoot, "node_modules", "@actalk", "zworld-studio", "dist", "api", "index.js"),
-    join(cliPackageRoot, "node_modules", "@actalk", "zworld-studio", "server.cjs"),
-    join(cliPackageRoot, "..", "zworld-studio", "dist", "api", "index.js"),
-    join(cliPackageRoot, "..", "zworld-studio", "server.cjs"),
+    join(root, "node_modules", "@zworld", "studio", "dist", "api", "index.js"),
+    join(root, "node_modules", "@zworld", "studio", "server.cjs"),
+    join(cliPackageRoot, "node_modules", "@zworld", "studio", "dist", "api", "index.js"),
+    join(cliPackageRoot, "node_modules", "@zworld", "studio", "server.cjs"),
+    join(cliPackageRoot, "..", "studio", "dist", "api", "index.js"),
+    join(cliPackageRoot, "..", "studio", "server.cjs"),
   ]);
   if (builtEntry) {
     return {
