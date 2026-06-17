@@ -66,6 +66,7 @@ npm i -g @zworld/zworld
 git clone <your-repo> zworld
 cd zworld
 pnpm install && pnpm build
+./setup.sh          # 注册 zworld 命令到 ~/.zshrc，重开终端后全局生效
 ```
 
 #### 目录结构
@@ -80,16 +81,21 @@ zworld/
 └── start.sh        ← 一键启动入口
 ```
 
-#### 每次启动
+#### 日常使用（setup.sh 执行后，任意终端直接使用）
 
 ```bash
-./start.sh              # 后台启动，终端立即返回，浏览器自动打开
-./start.sh restart      # 重启（自动停旧进程再启动）
-./start.sh stop         # 停止
-./start.sh status       # 查看是否在运行
-./start.sh log          # 实时查看日志（Ctrl+C 退出）
-./start.sh book create --title "吞天魔帝" --genre xuanhuan
-./start.sh write next 吞天魔帝
+zworld                  # 后台启动 Studio，浏览器自动打开，终端立即返回
+zworld restart          # 重启
+zworld stop             # 停止
+zworld status           # 查看是否在运行
+zworld log              # 实时查看日志（Ctrl+C 退出不影响 Studio）
+zworld build            # 重新构建（改代码后执行）
+zworld update           # 拉最新代码 + 重建一步完成
+
+# CLI 命令（在任意目录都能用）
+zworld book create --title "吞天魔帝" --genre xuanhuan
+zworld write next 吞天魔帝
+zworld doctor
 ```
 
 #### 模型配置（`~/.zworld/.env`）
@@ -133,17 +139,19 @@ ZWORLD_DEFAULT_LANGUAGE=zh           # 写作语言，zh 或 en
 ./start.sh doctor
 ```
 
-#### 换电脑迁移
+#### 换电脑迁移（6 步还原）
 
 ```bash
-git clone <your-repo> zworld     # 代码 + 书稿一起拉下来
+git clone <your-repo> zworld
 cd zworld
 pnpm install && pnpm build
+./setup.sh                              # 注册全局 zworld 命令
 mkdir -p ~/.zworld
 echo 'ZWORLD_LLM_SERVICE=deepseek' > ~/.zworld/.env
 echo 'ZWORLD_LLM_API_KEY=sk-your-key' >> ~/.zworld/.env
 echo 'ZWORLD_LLM_MODEL=deepseek-v4-flash' >> ~/.zworld/.env
-./start.sh                       # 启动，书稿原封不动
+# 重开终端，然后：
+zworld                                  # 书稿原封不动，直接启动
 ```
 
 ---
