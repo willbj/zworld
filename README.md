@@ -66,7 +66,7 @@ npm i -g @zworld/zworld
 git clone <your-repo> zworld
 cd zworld
 pnpm install && pnpm build
-. ./setup.sh        # 注册 zworld 命令，当前终端立即生效
+source ./setup.sh        # 注册 zworld 命令，当前终端立即生效
 ```
 
 #### 目录结构
@@ -145,7 +145,7 @@ zworld doctor
 git clone <your-repo> zworld
 cd zworld
 pnpm install && pnpm build
-. ./setup.sh        # 注册全局 zworld 命令，立即生效
+source ./setup.sh        # 注册全局 zworld 命令，立即生效
 mkdir -p ~/.zworld
 echo 'ZWORLD_LLM_SERVICE=deepseek' > ~/.zworld/.env
 echo 'ZWORLD_LLM_API_KEY=sk-your-key' >> ~/.zworld/.env

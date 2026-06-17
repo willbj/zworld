@@ -63,11 +63,11 @@ zworld() {
 BLOCK
 }
 
-# 检测是否以 source 方式运行（. ./setup.sh 或 source ./setup.sh）
+# 检测是否以 source 方式运行（source ./setup.sh）
 # 只有 source 方式才能让函数在当前终端立即生效
 [[ "${ZSH_EVAL_CONTEXT}" != *:file:* ]] && {
   echo "提示：请用 source 方式运行以立即生效："
-  echo "  . ./setup.sh"
+  echo "  source ./setup.sh"
   echo "（直接 ./setup.sh 会写入 ~/.zshrc，但当前终端需重开才生效）"
   echo ""
 }
