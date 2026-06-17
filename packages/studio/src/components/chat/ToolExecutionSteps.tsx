@@ -527,6 +527,93 @@ function useElapsedTimer(startedAt: number, active: boolean): number {
   return elapsed;
 }
 
+// -- Audit result preview (sub_agent auditor) --
+
+interface AuditIssueItem {
+  severity: string;
+  category: string;
+  description: string;
+  suggestion: string;
+}
+
+function AuditResultPreview({ exec }: { exec: ToolExecution }) {
+  if (exec.agent !== "auditor" || exec.status !== "completed") return null;
+  if (!exec.details || typeof exec.details !== "object") return null;
+  const d = exec.details as Record<string, unknown>;
+  if (d.kind !== "chapter_audited") return null;
+
+  const passed = d.passed as boolean;
+  const score = d.overallScore as number | undefined;
+  const summary = d.summary as string | undefined;
+  const issues = (d.issues ?? []) as AuditIssueItem[];
+  const criticals = issues.filter((i) => i.severity === "critical");
+  const warnings = issues.filter((i) => i.severity === "warning");
+
+  return (
+    <div className="mx-3 mb-3 mt-1 rounded-xl border border-border/40 bg-card/50 text-xs overflow-hidden">
+      {/* header */}
+      <div className={`flex items-center justify-between px-3 py-2 ${passed ? "bg-emerald-500/10" : "bg-destructive/10"}`}>
+        <div className="flex items-center gap-2 font-medium">
+          {passed
+            ? <CheckCircle2 size={14} className="text-emerald-500 shrink-0" />
+            : <XCircle size={14} className="text-destructive shrink-0" />}
+          <span className={passed ? "text-emerald-700 dark:text-emerald-400" : "text-destructive"}>
+            {passed ? "审稿通过" : "审稿未通过"}
+          </span>
+        </div>
+        {score != null && (
+          <span className={`font-mono font-semibold text-sm ${score >= 85 ? "text-emerald-600 dark:text-emerald-400" : score >= 70 ? "text-yellow-600 dark:text-yellow-400" : "text-destructive"}`}>
+            {score} 分
+          </span>
+        )}
+      </div>
+
+      {/* summary */}
+      {summary && (
+        <div className="px-3 py-2 text-muted-foreground border-b border-border/30 leading-relaxed">
+          {summary}
+        </div>
+      )}
+
+      {/* issues */}
+      {issues.length > 0 && (
+        <div className="divide-y divide-border/20">
+          {criticals.map((issue, i) => (
+            <div key={`c-${i}`} className="px-3 py-2 bg-destructive/5">
+              <div className="flex items-start gap-1.5">
+                <span className="shrink-0 mt-0.5 rounded px-1 py-0.5 text-[10px] font-medium bg-destructive/15 text-destructive leading-none">严重</span>
+                <div className="min-w-0">
+                  <div className="text-foreground/90 leading-snug">{issue.description}</div>
+                  {issue.suggestion && (
+                    <div className="mt-0.5 text-muted-foreground/70">{issue.suggestion}</div>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+          {warnings.map((issue, i) => (
+            <div key={`w-${i}`} className="px-3 py-2">
+              <div className="flex items-start gap-1.5">
+                <span className="shrink-0 mt-0.5 rounded px-1 py-0.5 text-[10px] font-medium bg-yellow-500/15 text-yellow-700 dark:text-yellow-400 leading-none">警告</span>
+                <div className="min-w-0">
+                  <div className="text-foreground/80 leading-snug">{issue.description}</div>
+                  {issue.suggestion && (
+                    <div className="mt-0.5 text-muted-foreground/70">{issue.suggestion}</div>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {issues.length === 0 && (
+        <div className="px-3 py-2 text-muted-foreground">无问题</div>
+      )}
+    </div>
+  );
+}
+
 // -- Pipeline operation (sub_agent) --
 
 function PipelineExecution({
@@ -577,6 +664,7 @@ function PipelineExecution({
         onRejectProposedAction={onRejectProposedAction}
       />
       <ShortFictionResultPreview exec={exec} />
+      <AuditResultPreview exec={exec} />
       <PlayResultPreview exec={exec} />
       <PlayEditPreview exec={exec} />
       <CollapsibleContent>

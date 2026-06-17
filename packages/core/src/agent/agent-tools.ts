@@ -482,6 +482,21 @@ function prepareSubAgentArguments(args: unknown): SubAgentParamsType {
       delete prepared.platform;
     }
   }
+  // Weak models (e.g. DeepSeek-flash) often omit `instruction` when following
+  // short examples in the system prompt. Auto-fill a sensible default so
+  // schema validation does not reject the call — instruction is only
+  // meaningfully consumed by the architect agent anyway.
+  if (!prepared.instruction) {
+    const agent = prepared.agent as string;
+    const ch = prepared.chapterNumber;
+    const defaults: Record<string, string> = {
+      writer:   "续写下一章",
+      auditor:  ch != null ? `审稿第 ${ch} 章` : "审稿最新章节",
+      reviser:  ch != null ? `修订第 ${ch} 章` : "修订最新章节",
+      exporter: "导出书籍",
+    };
+    if (defaults[agent]) prepared.instruction = defaults[agent];
+  }
   return prepared as SubAgentParamsType;
 }
 
@@ -610,6 +625,20 @@ export function createSubAgentTool(
             return textResult(
               `Audit chapter ${audit.chapterNumber}: ${audit.passed ? "PASSED" : "FAILED"}, ${(audit.issues ?? []).length} issue(s).` +
               (issueLines ? `\n${issueLines}` : ""),
+              {
+                kind: "chapter_audited" as const,
+                bookId: targetBookId,
+                chapterNumber: audit.chapterNumber,
+                passed: audit.passed,
+                overallScore: audit.overallScore,
+                issues: audit.issues as ReadonlyArray<{
+                  severity: string;
+                  category: string;
+                  description: string;
+                  suggestion: string;
+                }>,
+                summary: audit.summary,
+              },
             );
           }
 

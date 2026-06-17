@@ -328,10 +328,10 @@ function buildBookPrompt(bookId: string, isZh: boolean): string {
 - 不要在聊天回答里直接写章节正文；不能输出“# 第 N 章”或大段小说正文来冒充落盘结果。
 - 用户要求续写、写下一章、继续正文时，必须调用 sub_agent(agent="writer")；不要先 read/ls 再自己写正文。
 - sub_agent 成功返回后，本轮直接结束。不要继续调用 read、ls、patch_chapter_text，也不要再补写正文。
-- 用户说“写下一章 / 继续写 / 再来一章” → sub_agent(agent="writer")。
-- 用户说“审第 N 章 / 看看这一章问题” → sub_agent(agent="auditor", chapterNumber=N)。
-- 极易出错：用户说“改 / 修订 / 重写第 N 章”、或“第 N 章哪里不好” → 必须用 sub_agent(agent="reviser", chapterNumber=N)，不要用 writer；writer 只会续写新的下一章，不会修改旧章节。
-- 极易出错：用户说“写下一章 / 继续写 / 再来一章” → 才用 sub_agent(agent="writer")，不要把它理解成 reviser。
+- 用户说”写下一章 / 继续写 / 再来一章” → sub_agent(agent=”writer”, instruction=”续写下一章”)。
+- 用户说”审第 N 章 / 看看这一章问题” → sub_agent(agent=”auditor”, chapterNumber=N, instruction=”审稿第 N 章”)。
+- 极易出错：用户说”改 / 修订 / 重写第 N 章”、或”第 N 章哪里不好” → 必须用 sub_agent(agent=”reviser”, chapterNumber=N, instruction=”修订第 N 章”)，不要用 writer；writer 只会续写新的下一章，不会修改旧章节。
+- 极易出错：用户说”写下一章 / 继续写 / 再来一章” → 才用 sub_agent(agent=”writer”)，不要把它理解成 reviser。
 - 明确执行命令不需要先 read/ls 预检查，直接调用对应 sub_agent；sub_agent 会读取必要上下文。
 - 用户没说章节号、只说“改刚才那章” → 先确认最新章节号或读取章节索引后再修。
 - 用户问设定相关问题 → 先 read，再回答。
@@ -382,9 +382,9 @@ ${commonOutputRules(true)}`
 - Do not answer chapter-writing requests with raw chapter prose in chat; never output "# Chapter N" or a long fiction body as if it had been saved.
 - When the user asks to continue or write the next chapter, you must call sub_agent(agent="writer"); do not read/list files first and then write prose yourself.
 - After a successful sub_agent result, end the current turn immediately. Do not keep calling read, ls, patch_chapter_text, or add extra prose.
-- "write next / continue / one more chapter" → sub_agent(agent="writer").
-- "audit chapter N / review this chapter" → sub_agent(agent="auditor", chapterNumber=N).
-- High-risk rule: "revise / fix / rewrite chapter N" or "chapter N has issues" → sub_agent(agent="reviser", chapterNumber=N), never writer. writer only appends a new next chapter; it does not edit an old chapter.
+- "write next / continue / one more chapter" → sub_agent(agent="writer", instruction="write the next chapter").
+- "audit chapter N / review this chapter" → sub_agent(agent="auditor", chapterNumber=N, instruction="audit chapter N").
+- High-risk rule: "revise / fix / rewrite chapter N" or "chapter N has issues" → sub_agent(agent="reviser", chapterNumber=N, instruction="revise chapter N"), never writer. writer only appends a new next chapter; it does not edit an old chapter.
 - High-risk rule: "write next / continue / one more chapter" → sub_agent(agent="writer"), not reviser.
 - Clear execution commands do not need a read/ls preflight; call the matching sub_agent directly, because the sub-agent will load required context.
 - If the user says "fix the chapter we just wrote" without a number, confirm the latest chapter number or read the chapter index first.

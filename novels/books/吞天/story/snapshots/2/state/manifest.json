@@ -1,9 +1,0 @@
-{
-  "schemaVersion": 2,
-  "language": "zh",
-  "lastAppliedChapter": 2,
-  "projectionVersion": 1,
-  "migrationWarnings": [
-    "H002:status normalized from \"partial_reveal\" to \"open\""
-  ]
-}

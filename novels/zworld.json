@@ -4,12 +4,18 @@
   "language": "zh",
   "llm": {
     "provider": "openai",
-    "service": "custom",
+    "service": "deepseek",
     "configSource": "studio",
-    "baseUrl": "",
-    "model": "",
+    "baseUrl": "https://api.deepseek.com",
+    "model": "deepseek-v4-flash",
     "apiFormat": "chat",
-    "stream": true
+    "stream": true,
+    "services": [
+      {
+        "service": "deepseek"
+      }
+    ],
+    "defaultModel": "deepseek-v4-flash"
   },
   "notify": [],
   "inputGovernanceMode": "v2",
