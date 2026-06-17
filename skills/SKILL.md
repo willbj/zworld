@@ -2,7 +2,7 @@
 name: zworld
 description: Local AI fiction creation system with Studio Chat, CLI, and TUI - use for long-form novel writing, standalone short-fiction packages, cover generation, open-world / branching interactive fiction, fan fiction, spinoffs, style imitation, chapter continuation/import, EPUB export, AIGC detection, and project analytics. Native English support with 10 built-in English genre profiles (LitRPG, Progression Fantasy, Isekai, Cultivation, System Apocalypse, Dungeon Core, Romantasy, Sci-Fi, Tower Climber, Cozy Fantasy). Also supports Chinese web novel genres (xuanhuan, xianxia, urban, horror, other). Includes governed context assembly, protected/compressible context budgeting, chapter planning, writing, audit/revision, persistent world/truth state, multi-model routing, cover/image services, custom OpenAI-compatible providers, and ZWorld Studio web UI for visual book management, Short runs, Play worlds, cover generation, chapter review, market radar, and analytics.
 version: 2.4.0
-metadata: { "openclaw": { "emoji": "📖", "requires": { "bins": ["zworld", "node"], "env": ["OPENAI_API_KEY"] }, "primaryEnv": "OPENAI_API_KEY", "homepage": "https://github.com/Narcooo/zworld", "install": [{ "id": "npm", "kind": "node", "package": "@actalk/zworld", "label": "Install ZWorld (npm)" }] } }
+metadata: { "openclaw": { "emoji": "📖", "requires": { "bins": ["zworld", "node"], "env": ["OPENAI_API_KEY"] }, "primaryEnv": "OPENAI_API_KEY", "homepage": "https://github.com/Narcooo/zworld", "install": [{ "id": "npm", "kind": "node", "package": "@zworld/zworld", "label": "Install ZWorld (npm)" }] } }
 ---
 
 # ZWorld - Story Creation AI Agent
@@ -673,7 +673,7 @@ zworld down
 
 ## Security & Trust
 
-- **License**: the ClawHub skill descriptor is MIT-0 per platform policy, but the underlying `@actalk/zworld`, `@actalk/zworld-core`, and `@actalk/zworld-studio` npm packages are **AGPL-3.0-only**. Running ZWorld and distributing modified versions are governed by AGPL. Full source on GitHub for auditability.
+- **License**: the ClawHub skill descriptor is MIT-0 per platform policy, but the underlying `@zworld/zworld`, `@zworld/core`, and `@zworld/studio` npm packages are **AGPL-3.0-only**. Running ZWorld and distributing modified versions are governed by AGPL. Full source on GitHub for auditability.
 - **No install hooks**: npm package has no `preinstall`/`postinstall`/`install` scripts. Install is inert.
 - **Local-only file I/O**: all read/write stays inside the project directory (`books/*`, `zworld.json`, `zworld.log`). No writes outside the working directory.
 - **No telemetry**: ZWorld does not phone home, collect usage stats, or ship any data to ZWorld-controlled servers. The only outbound traffic is to the LLM provider endpoint you explicitly configure.

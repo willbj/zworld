@@ -1,0 +1,83 @@
+{
+  "chapter": 2,
+  "plannerInputs": [
+    "/Users/will/ai_workspace/inkos/my-novel/books/吞天/story/author_intent.md",
+    "/Users/will/ai_workspace/inkos/my-novel/books/吞天/story/current_focus.md",
+    "/Users/will/ai_workspace/inkos/my-novel/books/吞天/story/outline/story_frame.md",
+    "/Users/will/ai_workspace/inkos/my-novel/books/吞天/story/outline/volume_map.md",
+    "/Users/will/ai_workspace/inkos/my-novel/books/吞天/story/chapter_summaries.md",
+    "/Users/will/ai_workspace/inkos/my-novel/books/吞天/story/book_rules.md",
+    "/Users/will/ai_workspace/inkos/my-novel/books/吞天/story/current_state.md",
+    "/Users/will/ai_workspace/inkos/my-novel/books/吞天/story/pending_hooks.md",
+    "/Users/will/ai_workspace/inkos/my-novel/books/吞天/story/memory.db"
+  ],
+  "composerInputs": [
+    "/Users/will/ai_workspace/inkos/my-novel/books/吞天/story/runtime/chapter-0002.intent.md"
+  ],
+  "selectedSources": [
+    "runtime/chapter_memo",
+    "story/current_focus.md",
+    "story/author_intent.md",
+    "story/audit_drift.md",
+    "story/current_state.md",
+    "story/outline/story_frame.md#主题与基调",
+    "story/outline/story_frame.md#核心冲突-对手定性-前台-后台双层故事",
+    "story/outline/story_frame.md#世界观底色-铁律-质感-本书专属规则",
+    "story/outline/story_frame.md#终局方向-全书objective",
+    "story/outline/volume_map.md#段1-各卷主题与情绪曲线",
+    "story/outline/volume_map.md#段2-卷间钩子与回收承诺-前台-后台双层覆盖",
+    "story/outline/volume_map.md#第一卷-荒骨遗泽",
+    "story/outline/volume_map.md#段4-卷尾必须发生的改变",
+    "story/chapter_summaries.md#recent_titles",
+    "story/chapter_summaries.md#recent_mood_type_trail",
+    "runtime/hook_debt#H001",
+    "runtime/hook_debt#H002",
+    "story/current_state.md#当前冲突",
+    "story/current_state.md#当前目标",
+    "story/current_state.md#主角状态",
+    "story/current_state.md#当前限制",
+    "story/chapter_summaries.md#1",
+    "story/pending_hooks.md#H001",
+    "story/pending_hooks.md#H002",
+    "story/pending_hooks.md#mystery-卷轴的具体用-途和来历-白邺从死去的",
+    "story/pending_hooks.md#mystery-第三人为何离-三名追杀者中-体修和领头者"
+  ],
+  "contextTiers": {
+    "protectedSources": [
+      "runtime/chapter_memo",
+      "story/current_focus.md",
+      "story/author_intent.md",
+      "story/audit_drift.md",
+      "story/current_state.md",
+      "story/outline/story_frame.md#主题与基调",
+      "story/outline/story_frame.md#核心冲突-对手定性-前台-后台双层故事",
+      "story/outline/story_frame.md#世界观底色-铁律-质感-本书专属规则",
+      "story/outline/story_frame.md#终局方向-全书objective",
+      "story/outline/volume_map.md#段1-各卷主题与情绪曲线",
+      "story/outline/volume_map.md#段2-卷间钩子与回收承诺-前台-后台双层覆盖",
+      "story/outline/volume_map.md#第一卷-荒骨遗泽",
+      "story/outline/volume_map.md#段4-卷尾必须发生的改变",
+      "runtime/hook_debt#H001",
+      "runtime/hook_debt#H002",
+      "story/current_state.md#当前冲突",
+      "story/current_state.md#当前目标",
+      "story/current_state.md#主角状态",
+      "story/current_state.md#当前限制",
+      "story/pending_hooks.md#H001",
+      "story/pending_hooks.md#H002",
+      "story/pending_hooks.md#mystery-卷轴的具体用-途和来历-白邺从死去的",
+      "story/pending_hooks.md#mystery-第三人为何离-三名追杀者中-体修和领头者"
+    ],
+    "compressibleSources": [
+      "story/chapter_summaries.md#recent_titles",
+      "story/chapter_summaries.md#recent_mood_type_trail",
+      "story/chapter_summaries.md#1"
+    ]
+  },
+  "tokenBudget": {
+    "protectedTokens": 9236,
+    "compressibleTokens": 230,
+    "totalSelectedTokens": 9466
+  },
+  "notes": []
+}

@@ -1,0 +1,49 @@
+{
+  "hooks": [
+    {
+      "hookId": "H001",
+      "startChapter": 0,
+      "type": "身世",
+      "status": "progressing",
+      "lastAdvancedChapter": 2,
+      "expectedPayoff": "养父身份揭秘",
+      "notes": "白邺吞噬卷轴后模糊感应到养父也修炼过此诀，但具体关系未点明。"
+    },
+    {
+      "hookId": "H002",
+      "startChapter": 0,
+      "type": "功法",
+      "status": "open",
+      "lastAdvancedChapter": 2,
+      "expectedPayoff": "吞天诀的来历/真名/代价",
+      "notes": "白邺通过吞噬卷轴获得吞天诀第一层完整运转路径，但功法真名、完整来历、代价上限仍不揭示。"
+    },
+    {
+      "hookId": "mystery-卷轴的具体用途和来历",
+      "startChapter": 1,
+      "type": "mystery",
+      "status": "resolved",
+      "lastAdvancedChapter": 2,
+      "expectedPayoff": "已回收",
+      "notes": "卷轴被吞噬，其信息内容（功法路径+残破记忆画面）被白邺吸收。卷轴化为粉末消散。"
+    },
+    {
+      "hookId": "mystery-第三人为何离开",
+      "startChapter": 1,
+      "type": "mystery",
+      "status": "open",
+      "lastAdvancedChapter": 2,
+      "expectedPayoff": "第三人为何离开",
+      "notes": "本章未推进。白邺在崖顶短暂回想，但无新信息。"
+    },
+    {
+      "hookId": "H003",
+      "startChapter": 2,
+      "type": "功法后遗症",
+      "status": "open",
+      "lastAdvancedChapter": 2,
+      "expectedPayoff": "消化期结束后的饥饿反噬",
+      "notes": "新开伏笔。白邺进入消化期，吞噬效率下降，饥饿感即将成倍反噬，为下一章制造紧迫感。"
+    }
+  ]
+}

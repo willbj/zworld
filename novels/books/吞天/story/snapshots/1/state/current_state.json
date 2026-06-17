@@ -1,0 +1,53 @@
+{
+  "chapter": 1,
+  "facts": [
+    {
+      "subject": "protagonist",
+      "predicate": "主角状态",
+      "object": "重伤但正在修复。左肩被体修一拳砸塌（正在愈合），右腿跳崖摔断膝盖（正在愈合），后背被尖石划开（正在愈合），胸口被领头者一掌拍凹陷（肋骨多根断裂，正在愈合）。体内有奇异力量在修复伤势，体温升高，皮肤泛红。饥饿感强烈，从胃底烧到喉咙口。",
+      "validFromChapter": 1,
+      "validUntilChapter": null,
+      "sourceChapter": 1
+    },
+    {
+      "subject": "protagonist",
+      "predicate": "当前位置",
+      "object": "荒山北面断崖底",
+      "validFromChapter": 1,
+      "validUntilChapter": null,
+      "sourceChapter": 1
+    },
+    {
+      "subject": "protagonist",
+      "predicate": "当前冲突",
+      "object": "被御兽宗执法弟子追杀（已杀死两人，第三人离开）",
+      "validFromChapter": 1,
+      "validUntilChapter": null,
+      "sourceChapter": 1
+    },
+    {
+      "subject": "protagonist",
+      "predicate": "当前敌我",
+      "object": "无",
+      "validFromChapter": 1,
+      "validUntilChapter": null,
+      "sourceChapter": 1
+    },
+    {
+      "subject": "protagonist",
+      "predicate": "当前目标",
+      "object": "找个地方压下体内翻涌的力量，活下去",
+      "validFromChapter": 1,
+      "validUntilChapter": null,
+      "sourceChapter": 1
+    },
+    {
+      "subject": "protagonist",
+      "predicate": "当前限制",
+      "object": "重伤未愈，体内力量不稳定，随时可能失控",
+      "validFromChapter": 1,
+      "validUntilChapter": null,
+      "sourceChapter": 1
+    }
+  ]
+}
