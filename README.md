@@ -78,6 +78,94 @@ ZWorld Play 发布和 Studio 体验升级：你可以用一句自然语言创建
 npm i -g @zworld/zworld
 ```
 
+### 本地源码自用（推荐，书稿与代码同一 Git 仓库）
+
+适合自己深度使用、定制改造，或希望书稿和代码一起用 Git 管理的场景。
+
+#### 一次性初始化
+
+```bash
+git clone <your-repo> zworld
+cd zworld
+pnpm install && pnpm build
+```
+
+#### 目录结构
+
+```
+zworld/
+├── packages/       ← 源码
+├── novels/         ← 你的书稿（随 Git 追踪，.db 和 exports 自动忽略）
+│   ├── zworld.json
+│   ├── 吞天魔帝/
+│   └── 都市短篇/
+└── start.sh        ← 一键启动入口
+```
+
+#### 每次启动
+
+```bash
+./start.sh              # 进入 novels/，启动 Studio，浏览器自动打开
+./start.sh book create --title "吞天魔帝" --genre xuanhuan
+./start.sh write next 吞天魔帝
+```
+
+#### 模型配置（`~/.zworld/.env`）
+
+CLI、daemon 和 `start.sh` 都会读取 `~/.zworld/.env` 作为全局模型配置，存在用户主目录，不进入 Git 仓库。
+
+```bash
+mkdir -p ~/.zworld
+
+# DeepSeek（推荐）
+echo 'ZWORLD_LLM_SERVICE=deepseek' > ~/.zworld/.env
+echo 'ZWORLD_LLM_API_KEY=sk-your-key' >> ~/.zworld/.env
+echo 'ZWORLD_LLM_MODEL=deepseek-v4-flash' >> ~/.zworld/.env
+```
+
+可用的 `ZWORLD_LLM_SERVICE` 值（内置自动推导 base URL，无需手填）：
+
+| SERVICE | 说明 |
+|---------|------|
+| `deepseek` | DeepSeek，模型：`deepseek-v4-flash` / `deepseek-chat` / `deepseek-reasoner` |
+| `moonshot` | Moonshot Kimi，模型：`kimi-k2.5` 等 |
+| `google` | Google Gemini，模型：`gemini-2.5-flash` 等 |
+| `openai` | OpenAI，模型：`gpt-4o` 等 |
+| `anthropic` | Anthropic Claude，模型：`claude-opus-4-7` 等 |
+
+也可以用 `ZWORLD_LLM_PROVIDER=custom` + `ZWORLD_LLM_BASE_URL` 接任何 OpenAI-compatible 端点。
+
+完整可选字段：
+
+```bash
+ZWORLD_LLM_SERVICE=deepseek          # 服务商名称（自动推导 base URL）
+ZWORLD_LLM_API_KEY=sk-...            # API Key
+ZWORLD_LLM_MODEL=deepseek-v4-flash   # 默认模型
+ZWORLD_LLM_TEMPERATURE=0.7           # 可选
+ZWORLD_DEFAULT_LANGUAGE=zh           # 写作语言，zh 或 en
+```
+
+验证配置：
+
+```bash
+./start.sh doctor
+```
+
+#### 换电脑迁移
+
+```bash
+git clone <your-repo> zworld     # 代码 + 书稿一起拉下来
+cd zworld
+pnpm install && pnpm build
+mkdir -p ~/.zworld
+echo 'ZWORLD_LLM_SERVICE=deepseek' > ~/.zworld/.env
+echo 'ZWORLD_LLM_API_KEY=sk-your-key' >> ~/.zworld/.env
+echo 'ZWORLD_LLM_MODEL=deepseek-v4-flash' >> ~/.zworld/.env
+./start.sh                       # 启动，书稿原封不动
+```
+
+---
+
 ### 通过 OpenClaw 使用 🦞
 
 ZWorld 已发布为 [OpenClaw](https://clawhub.ai/narcooo/inkos) Skill，可被任何兼容 Agent（Claude Code、OpenClaw 等）直接调用：
