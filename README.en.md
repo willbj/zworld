@@ -1,6 +1,6 @@
 <p align="center">
   <img src="assets/logo.svg" width="120" height="120" alt="ZWorld Logo">
-  <img src="assets/inkos-text.svg" width="240" height="65" alt="ZWorld">
+  <img src="assets/zworld-text.svg" width="240" height="65" alt="ZWorld">
 </p>
 
 <h1 align="center">Story Creation AI Agent<br><sub>Creation system for long-form and short fiction, scripts, interactive games, and IP content</sub></h1>
