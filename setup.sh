@@ -63,14 +63,9 @@ zworld() {
 BLOCK
 }
 
-# 检测是否以 source 方式运行（source ./setup.sh）
-# 只有 source 方式才能让函数在当前终端立即生效
-[[ "${ZSH_EVAL_CONTEXT}" != *:file:* ]] && {
-  echo "提示：请用 source 方式运行以立即生效："
-  echo "  source ./setup.sh"
-  echo "（直接 ./setup.sh 会写入 ~/.zshrc，但当前终端需重开才生效）"
-  echo ""
-}
+# 检测是否以 source 方式运行
+_is_sourced=false
+[[ "${ZSH_EVAL_CONTEXT}" == *:file* ]] && _is_sourced=true
 
 # 1. 写入或更新 ~/.zshrc（持久化）
 if grep -q "$MARKER" "$ZSHRC" 2>/dev/null; then
@@ -93,11 +88,13 @@ else
   echo "✓ zworld 已写入 ~/.zshrc"
 fi
 
-# 2. 直接在当前 shell 中 eval（立即生效，无需手动 source）
-eval "$(_zworld_block)"
+# 2. source 模式下直接 eval，当前终端立即生效
+if $_is_sourced; then
+  eval "$(_zworld_block)"
+fi
 
 echo ""
-echo "配置完成，当前终端已生效！"
+echo "可用命令："
 echo "  zworld           → 启动 Studio"
 echo "  zworld restart   → 重启"
 echo "  zworld stop      → 停止"
@@ -107,4 +104,9 @@ echo "  zworld build     → 重新构建"
 echo "  zworld update    → 拉最新代码并重建"
 echo "  zworld book create --title '书名' --genre xuanhuan"
 echo ""
-echo "新终端自动生效，无需任何额外操作。"
+if $_is_sourced; then
+  echo "✓ 当前终端已生效，新终端自动生效。"
+else
+  echo "✓ source ./setup.sh  → 当前终端立即生效，新终端自动生效"
+  echo "  ./setup.sh         → 仅写入 ~/.zshrc，需新开终端才生效"
+fi
