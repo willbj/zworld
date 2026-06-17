@@ -5,13 +5,9 @@ ZSHRC="$HOME/.zshrc"
 MARKER="# >>> zworld >>>"
 MARKER_END="# <<< zworld <<<"
 
-# 检查是否已安装
-if grep -q "$MARKER" "$ZSHRC" 2>/dev/null; then
-  echo "zworld 已配置，跳过写入"
-else
-  cat >> "$ZSHRC" << SHELL
-
-$MARKER
+# 生成函数定义（复用于写入 .zshrc 和当前 session）
+_zworld_block() {
+  cat << BLOCK
 export ZWORLD_REPO="$REPO_DIR"
 __zworld_pid_file="\$ZWORLD_REPO/.zworld-studio.pid"
 __zworld_log_file="\$ZWORLD_REPO/.zworld-studio.log"
@@ -66,15 +62,31 @@ zworld() {
       ;;
   esac
 }
-$MARKER_END
-SHELL
-  echo "✓ zworld 已写入 $ZSHRC"
+BLOCK
+}
+
+# 检测是否以 source 方式运行（. ./setup.sh 或 source ./setup.sh）
+# 只有 source 方式才能让函数在当前终端立即生效
+[[ "${ZSH_EVAL_CONTEXT}" != *:file:* ]] && {
+  echo "提示：请用 source 方式运行以立即生效："
+  echo "  . ./setup.sh"
+  echo "（直接 ./setup.sh 会写入 ~/.zshrc，但当前终端需重开才生效）"
+  echo ""
+}
+
+# 1. 写入 ~/.zshrc（持久化，供以后每次新终端自动加载）
+if grep -q "$MARKER" "$ZSHRC" 2>/dev/null; then
+  echo "zworld 已在 ~/.zshrc 中，跳过写入"
+else
+  { echo; echo "$MARKER"; _zworld_block; echo "$MARKER_END"; } >> "$ZSHRC"
+  echo "✓ zworld 已写入 ~/.zshrc"
 fi
 
-# 立即生效
-source "$ZSHRC"
+# 2. 直接在当前 shell 中 eval（立即生效，无需手动 source）
+eval "$(_zworld_block)"
+
 echo ""
-echo "配置完成！现在可以用："
+echo "配置完成，当前终端已生效！"
 echo "  zworld           → 启动 Studio"
 echo "  zworld restart   → 重启"
 echo "  zworld stop      → 停止"
@@ -84,4 +96,4 @@ echo "  zworld build     → 重新构建"
 echo "  zworld update    → 拉最新代码并重建"
 echo "  zworld book create --title '书名' --genre xuanhuan"
 echo ""
-echo "新终端直接使用，无需任何额外设置。"
+echo "新终端自动生效，无需任何额外操作。"
