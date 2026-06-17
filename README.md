@@ -78,7 +78,7 @@ zworld/
 │   ├── zworld.json
 │   ├── 吞天魔帝/
 │   └── 都市短篇/
-└── start.sh        ← 一键启动入口
+
 ```
 
 #### 日常使用（setup.sh 执行后，任意终端直接使用）
@@ -100,7 +100,7 @@ zworld doctor
 
 #### 模型配置（`~/.zworld/.env`）
 
-CLI、daemon 和 `start.sh` 都会读取 `~/.zworld/.env` 作为全局模型配置，存在用户主目录，不进入 Git 仓库。
+CLI 和 daemon 都会读取 `~/.zworld/.env` 作为全局模型配置，存在用户主目录，不进入 Git 仓库。
 
 ```bash
 mkdir -p ~/.zworld
@@ -136,7 +136,7 @@ ZWORLD_DEFAULT_LANGUAGE=zh           # 写作语言，zh 或 en
 验证配置：
 
 ```bash
-./start.sh doctor
+zworld doctor
 ```
 
 #### 换电脑迁移（6 步还原）
