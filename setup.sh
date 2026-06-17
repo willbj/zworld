@@ -36,8 +36,7 @@ __zworld_start() {
   while ! curl -s http://localhost:4567 >/dev/null 2>&1; do
     sleep 0.5; i=\$((i+1)); [ \$i -ge 20 ] && break
   done
-  open http://localhost:4567 2>/dev/null || true
-  echo "已就绪：http://localhost:4567"
+  echo "✓ 已就绪 → http://localhost:4567"
 }
 
 zworld() {
@@ -50,8 +49,7 @@ zworld() {
     update)  cd "\$ZWORLD_REPO" && git pull && pnpm install && pnpm build && echo "更新完成" ;;
     "")
       if __zworld_is_running; then
-        echo "Studio 已运行，打开浏览器..."
-        open http://localhost:4567 2>/dev/null || true
+        echo "Studio 运行中 → http://localhost:4567"
       else
         __zworld_start
       fi
@@ -74,9 +72,22 @@ BLOCK
   echo ""
 }
 
-# 1. 写入 ~/.zshrc（持久化，供以后每次新终端自动加载）
+# 1. 写入或更新 ~/.zshrc（持久化）
 if grep -q "$MARKER" "$ZSHRC" 2>/dev/null; then
-  echo "zworld 已在 ~/.zshrc 中，跳过写入"
+  # 已存在则替换旧内容（用 Python 处理多行替换更可靠）
+  python3 - "$ZSHRC" "$MARKER" "$MARKER_END" "$(_zworld_block)" << 'PY'
+import sys
+path, start, end, new_block = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
+with open(path) as f: content = f.read()
+import re
+content = re.sub(
+  re.escape(start) + r'.*?' + re.escape(end),
+  start + '\n' + new_block + '\n' + end,
+  content, flags=re.DOTALL
+)
+with open(path, 'w') as f: f.write(content)
+PY
+  echo "✓ zworld 已更新 ~/.zshrc"
 else
   { echo; echo "$MARKER"; _zworld_block; echo "$MARKER_END"; } >> "$ZSHRC"
   echo "✓ zworld 已写入 ~/.zshrc"
