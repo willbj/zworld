@@ -82,9 +82,11 @@ content = re.sub(
 )
 with open(path, 'w') as f: f.write(content)
 PY
+  echo ""
   echo "✓ zworld 已更新 ~/.zshrc"
 else
   { echo; echo "$MARKER"; _zworld_block; echo "$MARKER_END"; } >> "$ZSHRC"
+  echo ""
   echo "✓ zworld 已写入 ~/.zshrc"
 fi
 
