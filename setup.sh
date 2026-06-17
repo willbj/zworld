@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 # ZWorld 一键环境配置：将 zworld 命令注册到 ~/.zshrc
 REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
 ZSHRC="$HOME/.zshrc"
