@@ -14,10 +14,10 @@ import {
   type Logger,
   type OnStreamProgress,
   type ShortFictionReference,
-} from "@actalk/inkos-core";
+} from "@zworld/core";
 import { buildPipelineConfig, findProjectRoot, loadConfig, log, logError } from "../utils.js";
 
-export { extractResponsesImageBase64, resolveCoverApiKey } from "@actalk/inkos-core";
+export { extractResponsesImageBase64, resolveCoverApiKey } from "@zworld/core";
 
 export const shortCommand = new Command("short")
   .description("Short fiction production workflow");

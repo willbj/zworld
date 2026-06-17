@@ -1,7 +1,7 @@
 import {
   appendInteractionMessage,
   type InteractionSession,
-} from "@actalk/inkos-core";
+} from "@zworld/core";
 
 export function createOptimisticUserMessageSession(
   session: InteractionSession,

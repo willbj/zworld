@@ -77,7 +77,7 @@ import {
   type LogEntry,
   type RequestedIntent,
   type SessionKind,
-} from "@actalk/inkos-core";
+} from "@zworld/core";
 import { access, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { isAbsolute, join, relative, resolve } from "node:path";
 import { isSafeBookId } from "./safety.js";
@@ -1780,7 +1780,7 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
   // --- Genres ---
 
   app.get("/api/v1/genres", async (c) => {
-    const { listAvailableGenres, readGenreProfile } = await import("@actalk/inkos-core");
+    const { listAvailableGenres, readGenreProfile } = await import("@zworld/core");
     const rawGenres = await listAvailableGenres(root);
     const genres = await Promise.all(
       rawGenres.map(async (g) => {
@@ -1880,7 +1880,7 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
     // run (or a server restart) can also drop it — so a bare 404 is ambiguous
     // ("done" vs "never existed"). Check disk: if the foundation is fully
     // written, the book really is ready; report that truthfully.
-    const { isBookFoundationComplete } = await import("@actalk/inkos-core");
+    const { isBookFoundationComplete } = await import("@zworld/core");
     if (await isBookFoundationComplete(state.bookDir(id))) {
       return c.json({ status: "ready" });
     }
@@ -2027,7 +2027,7 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
     // can warn users their edits won't reach the runtime.
     // Hotfix: only tag as legacy when the book actually HAS the new layout.
     // Pre-Phase-5 books use story_bible/book_rules as the authoritative source.
-    const { isNewLayoutBook, tryParseBookRulesFrontmatter } = await import("@actalk/inkos-core");
+    const { isNewLayoutBook, tryParseBookRulesFrontmatter } = await import("@zworld/core");
     const legacy = LEGACY_SHIM_FILES.has(file) && await isNewLayoutBook(bookDir);
 
     try {
@@ -2796,7 +2796,7 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
     }
 
     // Hotfix: only tag shim files as legacy when the book has the new layout.
-    const { isNewLayoutBook } = await import("@actalk/inkos-core");
+    const { isNewLayoutBook } = await import("@zworld/core");
     const newLayout = await isNewLayoutBook(bookDir);
 
     async function describe(relPath: string): Promise<{ readonly name: string; readonly size: number; readonly preview: string; readonly legacy?: true; readonly readonly?: true; readonly readonlyReason?: string } | null> {
@@ -3935,7 +3935,7 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
 
       const content = await readFile(join(chaptersDir, match), "utf-8");
       const currentConfig = await loadCurrentProjectConfig();
-      const { ContinuityAuditor } = await import("@actalk/inkos-core");
+      const { ContinuityAuditor } = await import("@zworld/core");
       const auditor = new ContinuityAuditor({
         client: createLLMClient(currentConfig.llm),
         model: currentConfig.llm.model,
@@ -4053,7 +4053,7 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
   app.get("/api/v1/genres/:id", async (c) => {
     const genreId = c.req.param("id");
     try {
-      const { readGenreProfile } = await import("@actalk/inkos-core");
+      const { readGenreProfile } = await import("@zworld/core");
       const { profile, body } = await readGenreProfile(root, genreId);
       return c.json({ profile, body });
     } catch (e) {
@@ -4067,7 +4067,7 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
       throw new ApiError(400, "INVALID_GENRE_ID", `Invalid genre ID: "${genreId}"`);
     }
     try {
-      const { getBuiltinGenresDir } = await import("@actalk/inkos-core");
+      const { getBuiltinGenresDir } = await import("@zworld/core");
       const { mkdir: mkdirFs, copyFile } = await import("node:fs/promises");
       const builtinDir = getBuiltinGenresDir();
       const projectGenresDir = join(root, "genres");
@@ -4146,7 +4146,7 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
       if (!match) return c.json({ error: "Chapter not found" }, 404);
 
       const content = await readFile(join(chaptersDir, match), "utf-8");
-      const { analyzeAITells } = await import("@actalk/inkos-core");
+      const { analyzeAITells } = await import("@zworld/core");
       const result = analyzeAITells(content);
       return c.json({ chapterNumber: chapterNum, ...result });
     } catch (e) {
@@ -4168,7 +4168,7 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
     // story_bible.md or book_rules.md does nothing at runtime (the pipeline
     // reads outline/ instead). For pre-Phase-5 books these ARE authoritative.
     if (LEGACY_SHIM_FILES.has(file)) {
-      const { isNewLayoutBook } = await import("@actalk/inkos-core");
+      const { isNewLayoutBook } = await import("@zworld/core");
       if (await isNewLayoutBook(bookDir)) {
         return c.json(
           { error: "Legacy compat shim; edit outline/story_frame.md instead" },
@@ -4288,7 +4288,7 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
       const chaptersDir = join(bookDir, "chapters");
       const files = await readdir(chaptersDir);
       const mdFiles = files.filter((f) => f.endsWith(".md") && /^\d{4}/.test(f)).sort();
-      const { analyzeAITells } = await import("@actalk/inkos-core");
+      const { analyzeAITells } = await import("@zworld/core");
 
       const results = await Promise.all(
         mdFiles.map(async (f) => {
@@ -4309,7 +4309,7 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
   app.get("/api/v1/books/:id/detect/stats", async (c) => {
     const id = c.req.param("id");
     try {
-      const { loadDetectionHistory, analyzeDetectionInsights } = await import("@actalk/inkos-core");
+      const { loadDetectionHistory, analyzeDetectionInsights } = await import("@zworld/core");
       const bookDir = state.bookDir(id);
       const history = await loadDetectionHistory(bookDir);
       const insights = analyzeDetectionInsights(history);
@@ -4424,7 +4424,7 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
     if (!text?.trim()) return c.json({ error: "text is required" }, 400);
 
     try {
-      const { analyzeStyle } = await import("@actalk/inkos-core");
+      const { analyzeStyle } = await import("@zworld/core");
       const profile = analyzeStyle(text, sourceName ?? "unknown");
       return c.json(profile);
     } catch (e) {
@@ -4460,7 +4460,7 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
 
     broadcast("import:start", { bookId: id, type: "chapters" });
     try {
-      const { splitChapters } = await import("@actalk/inkos-core");
+      const { splitChapters } = await import("@zworld/core");
       const chapters = [...splitChapters(text, splitRegex)];
 
       const pipeline = new PipelineRunner(await buildPipelineConfig());
@@ -4696,7 +4696,7 @@ export function createStudioServer(initialConfig: ProjectConfig, root: string) {
 
   app.get("/api/v1/doctor", async (c) => {
     const { existsSync } = await import("node:fs");
-    const { GLOBAL_ENV_PATH } = await import("@actalk/inkos-core");
+    const { GLOBAL_ENV_PATH } = await import("@zworld/core");
 
     const checks = {
       inkosJson: existsSync(join(root, "inkos.json")),
