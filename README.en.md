@@ -6,18 +6,7 @@
 <h1 align="center">Story Creation AI Agent<br><sub>Creation system for long-form and short fiction, scripts, interactive games, and IP content</sub></h1>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@zworld/zworld"><img src="https://img.shields.io/npm/v/@zworld/zworld.svg?color=cb3837&logo=npm" alt="npm version"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg" alt="License: AGPL-3.0"></a>
-  <a href="https://github.com/Narcooo/inkos/stargazers"><img src="https://img.shields.io/github/stars/Narcooo/inkos?style=flat&logo=github&color=yellow" alt="GitHub stars"></a>
-  <a href="https://www.npmjs.com/package/@zworld/zworld"><img src="https://img.shields.io/npm/dm/@zworld/zworld?color=cb3837&logo=npm&label=downloads" alt="npm downloads"></a>
-  <a href="https://clawhub.ai/narcooo/inkos"><img src="https://img.shields.io/badge/🦞%20ClawHub-Skill-FF6B35?labelColor=1a1a1a" alt="ClawHub Skill"></a>
-</p>
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://kimi-file.moonshot.cn/prod-chat-kimi/kfs/4/1/2026-06-05/1d8h69mt3v89kkekg24gg">
-    <img alt="Kimi Open Source Friends" width="760" src="https://kimi-file.moonshot.cn/prod-chat-kimi/kfs/4/1/2026-06-05/1d8h69fudcmosb3pipls0">
-  </picture>
 </p>
 
 <p align="center">
@@ -534,36 +523,6 @@ pnpm dev          # Watch mode for all packages
 pnpm test         # Run tests
 pnpm typecheck    # Type-check without emitting
 ```
-
-## Star History
-
-<a href="https://www.star-history.com/#Narcooo/inkos&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Narcooo/inkos&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Narcooo/inkos&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Narcooo/inkos&type=date&legend=top-left" />
- </picture>
-</a>
-
-## Skills Download History
-
-<div align="center">
-
-<a href="https://skill-history.com/narcooo/inkos">
-  <img alt="Skills Download History" src="https://skill-history.com/chart/narcooo/inkos.svg" />
-</a>
-
-</div>
-
-## Repobeats
-
-![Alt](https://repobeats.axiom.co/api/embed/024114415c1505a8c27fb121e3b392524e48f583.svg "Repobeats analytics image")
-
-## Contributors
-
-<a href="https://github.com/Narcooo/inkos/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Narcooo/inkos" />
-</a>
 
 ## Acknowledgments
 

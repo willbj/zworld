@@ -6,20 +6,7 @@
 <h1 align="center">Story Creation AI Agent<br><sub>面向长短篇小说、剧本剧作、互动游戏与 IP 内容的创作智能体系统</sub></h1>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@zworld/zworld"><img src="https://img.shields.io/npm/v/@zworld/zworld.svg?color=cb3837&logo=npm" alt="npm version"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg" alt="License: AGPL-3.0"></a>
-  <a href="https://github.com/Narcooo/inkos/stargazers"><img src="https://img.shields.io/github/stars/Narcooo/inkos?style=flat&logo=github&color=yellow" alt="GitHub stars"></a>
-  <a href="https://www.npmjs.com/package/@zworld/zworld"><img src="https://img.shields.io/npm/dm/@zworld/zworld?color=cb3837&logo=npm&label=downloads" alt="npm downloads"></a>
-  <a href="https://clawhub.ai/narcooo/inkos"><img src="https://img.shields.io/badge/🦞%20ClawHub-Skill-FF6B35?labelColor=1a1a1a" alt="ClawHub Skill"></a>
-</p>
-
-<p align="left">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://kimi-file.moonshot.cn/prod-chat-kimi/kfs/4/1/2026-06-05/1d8h69mt3v89kkekg24gg">
-    <img alt="Kimi Open Source Friends" width="420" src="https://kimi-file.moonshot.cn/prod-chat-kimi/kfs/4/1/2026-06-05/1d8h69fudcmosb3pipls0">
-  </picture>
-  <br>
-  🎉🎉 ZWorld 入选首批 KIMI 开源合作伙伴 🎉🎉
 </p>
 
 <p align="center">
@@ -60,15 +47,6 @@ ZWorld Play 发布和 Studio 体验升级：你可以用一句自然语言创建
 
 
 **Native English novel writing now supported！** Set `--lang en` to write in English. See [English README](README.en.md) for details.
-
-## 欢迎交流
-
-> 当前更新相对频繁，后续会持续新增功能与优化写作效果。
-> 欢迎加群反馈问题、提出需求，也欢迎关注项目动态 — 我们的目标是做最强的基于小说的内容生态创作 AI Agent。
-
-<p align="center">
-  <img src="assets/55197096d0b6a571b68713aef9aee862.jpg" width="300" alt="微信交流群">
-</p>
 
 ## 快速开始
 
@@ -682,42 +660,9 @@ pnpm test         # 运行测试
 pnpm typecheck    # 类型检查
 ```
 
-## Star History
-
-<a href="https://www.star-history.com/#Narcooo/inkos&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Narcooo/inkos&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Narcooo/inkos&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Narcooo/inkos&type=date&legend=top-left" />
- </picture>
-</a>
-
-
-## Skills Download History
-
-<div align="center">
-
-<a href="https://skill-history.com/narcooo/inkos">
-  <img alt="Skills Download History" src="https://skill-history.com/chart/narcooo/inkos.svg" />
-</a>
-
-</div>
-
-## Repobeats
-
-![Repobeats analytics image](https://repobeats.axiom.co/api/embed/024114415c1505a8c27fb121e3b392524e48f583.svg)
-
-## Contributors
-
-<a href="https://github.com/Narcooo/inkos/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Narcooo/inkos" alt="Contributors" />
-</a>
-
 ## 致谢
 
 ZWorld 的 agent 运行时构建在 [pi](https://github.com/badlogic/pi-mono)（`@mariozechner/pi-ai` 与 `@mariozechner/pi-agent-core`，作者 Mario Zechner）之上。感谢 pi 提供的扎实底座。
-
-本开源项目已链接并认可 [LINUX DO](https://linux.do/) 社区，感谢社区成员的反馈、测试与讨论。
 
 ## 许可证
 
